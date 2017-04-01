@@ -1,1 +1,64 @@
-<p>yo {{$ctrl.greeting}}</p>
+<p class="title">KCL Guitar Society</p>
+
+<div class="row underline" id="bookHeader">
+
+    <div class="col-xs-2">
+
+        <span class="glyphicon glyphicon-menu-left prevMonth" aria-hidden="true"></span>
+
+    </div>
+
+    <div class="col-xs-8 calenderHeader">
+
+        <span>April 2017</span>
+
+    </div>
+
+    <div class="col-xs-2">
+
+        <span class="glyphicon glyphicon-menu-right nextMonth" aria-hidden="true"></span>
+
+    </div>
+</div>
+
+<div class="row calendarRow">
+
+    <div class="col-xs-1 dayName" ng-repeat="day in $ctrl.weekdays">
+        
+        {{day}}
+        
+    </div>
+
+</div>
+
+<div class="row calendarRow">
+    
+    <div class="col-xs-1 day" ng-repeat="i in $ctrl.getNumber($ctrl.paddingMonth) track by $index">
+                
+    </div>
+
+    <div class="col-xs-1 day" ng-repeat="i in $ctrl.getNumber($ctrl.daysInMonth) track by $index">
+        
+        <div class="row">
+        
+            <div class="col-xs-12">
+            
+                    {{$index + 1}}
+            
+            </div>
+        
+        </div>
+        
+        <div class="row">
+        
+            <div class="col-xs-12 times">
+            
+                    Hani T: 14:00 - 15:00
+            
+            </div>
+        
+        </div>
+                
+    </div>
+
+</div>
