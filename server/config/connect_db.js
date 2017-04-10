@@ -17,8 +17,8 @@ var productionOptions = {
 	host : process.env.DATABASE_HOST || 'localhost',
 	user : process.env.DATABASE_USER || 'root',
 	password :	process.env.DATABASE_PASS || '',
-	database : process.env.DATABASE_URL || 'module_selection',
-	users_table : 'User'
+	database : process.env.DATABASE_URL || 'guitar_society',
+    users_table : 'User'
 }
 
 /**

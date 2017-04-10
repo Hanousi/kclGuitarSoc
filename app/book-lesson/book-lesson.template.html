@@ -1,22 +1,24 @@
-<p class="title">KCL Guitar Society</p>
+<a href="#!/home"><p class="title">KCL Guitar Society</p></a>
 
 <div class="row underline" id="bookHeader">
 
     <div class="col-xs-2">
 
-        <span class="glyphicon glyphicon-menu-left prevMonth" aria-hidden="true"></span>
+        <span ng-click="$ctrl.prevMonth($ctrl.month)" class="glyphicon glyphicon-menu-left prevMonth extraLeft" aria-hidden="true"></span>
+        <span ng-click="$ctrl.prevMonth($ctrl.month)" class="glyphicon glyphicon-menu-left prevMonth" aria-hidden="true"></span>
 
     </div>
 
     <div class="col-xs-8 calenderHeader">
 
-        <span>April 2017</span>
+        <span>{{$ctrl.month + ' ' + $ctrl.year}}</span>
 
     </div>
 
     <div class="col-xs-2">
 
-        <span class="glyphicon glyphicon-menu-right nextMonth" aria-hidden="true"></span>
+        <span ng-click="$ctrl.nextMonth($ctrl.month)" class="glyphicon glyphicon-menu-right nextMonth extraRight" aria-hidden="true"></span>
+        <span ng-click="$ctrl.nextMonth($ctrl.month)" class="glyphicon glyphicon-menu-right nextMonth" aria-hidden="true"></span>
 
     </div>
 </div>
@@ -37,13 +39,13 @@
                 
     </div>
 
-    <div class="col-xs-1 day" ng-repeat="i in $ctrl.getNumber($ctrl.daysInMonth) track by $index">
-        
+    <div class="col-xs-1 day" ng-repeat="day in $ctrl.finalMonth">
+                
         <div class="row">
         
             <div class="col-xs-12">
             
-                    {{$index + 1}}
+                    {{day[0]}}
             
             </div>
         
@@ -51,10 +53,10 @@
         
         <div class="row">
         
-            <div class="col-xs-12 times">
+            <div class="col-xs-12 times" ng-repeat="lesson in day[1]">
             
-                    Hani T: 14:00 - 15:00
-            
+                {{lesson.TeacherName + ': ' + lesson.niceDateS + ' - ' + lesson.niceDateE}}
+                
             </div>
         
         </div>

@@ -3,6 +3,65 @@ body {
     color: white;
 }
 
+.navbar {
+    height: 8%;
+    opacity: 40%;
+}
+
+#homeBody {
+    height: 800px;
+    overflow-y: scroll;
+    position: relative;
+}
+
+#home {
+    height: 810px;
+}
+
+#aboutUs {
+    background-color: white;
+    height: 800px;
+}
+
+#bookALesson {
+    height: 800px;
+}
+
+#contactUs {
+    height: 800px;
+    background-color: white;
+}
+
+#navLogo {
+    float: left;
+}
+
+.navbar-brand {
+    font-size: 26px;
+    vertical-align: middle;
+    height: inherit;
+    line-height: 120%;
+}
+
+.navbarOptions {
+    height: 63px;
+    font-size: 20px;
+    vertical-align: middle;
+    line-height: 170% !important;
+}
+
+.navbar-header {
+/*    margin-right: 25% !important;*/
+}
+
+.extraLeft {
+    margin-right: -20px;
+}
+
+.extraRight {
+    margin-left: -17px;
+}
+
 .title {
     margin-top: 1%;
     text-align: center;
@@ -54,8 +113,17 @@ body {
 .day {
     border: 1px solid white;
     padding: 5px;
-    width: 13.3%;
+    width: 13.4%;
     margin: 0.4%;
     font-size: 18px;
     height: 120px;
+}
+
+a {
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
 }
