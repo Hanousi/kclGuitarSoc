@@ -1,4 +1,6 @@
 'use strict'
 
 angular.
-module('bookLesson', []);
+module('bookLesson', [
+    'ui.bootstrap'
+]);

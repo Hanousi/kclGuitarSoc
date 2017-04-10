@@ -1,4 +1,4 @@
-angular.module('KCLGS', ['ngRoute']).config(['$locationProvider', '$routeProvider',
+angular.module('KCLGS').config(['$locationProvider', '$routeProvider',
  function config($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 

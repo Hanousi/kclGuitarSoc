@@ -1,5 +1,5 @@
 angular.
-module('KCLGS').
+module('home').
 component('home', {
     templateUrl: 'home/home.template.html',
     controller: function HomeController($scope, $http) {

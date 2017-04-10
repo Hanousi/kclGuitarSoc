@@ -5,5 +5,6 @@ angular.module('KCLGS', [
  'bookLesson',
  'ngRoute',
  'ngCookies',
- 'ngAnimate'
+ 'ngAnimate',
+ 'ui.bootstrap'
 ]);

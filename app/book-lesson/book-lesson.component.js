@@ -1,10 +1,10 @@
 'use strict';
 
 angular.
-module('KCLGS').
+module('bookLesson', []).
 component('bookLesson', {
     templateUrl: 'book-lesson/book-lesson.template.html',
-    controller: function BookLessonController($scope, $http) {
+    controller: function BookLessonController($scope, $http, $uibModal) {
         var self = this;
 
         var myMap = new Map();
