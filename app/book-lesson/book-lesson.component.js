@@ -19,7 +19,6 @@ component('bookLesson', {
             }
 
             for (var key in self.lessons) {
-                console.log(myMap.get(Number(self.lessons[key].Day)));
                 var lessonsOnDay = myMap.get(Number(self.lessons[key].Day));
                 lessonsOnDay.push(self.lessons[key]);
                 myMap.set(Number(self.lessons[key].Day), lessonsOnDay);
@@ -41,20 +40,18 @@ component('bookLesson', {
         this.month = monthsInAYear[today.getMonth()];
 
         $http.get('/api/lessons/' + self.month).then(function successCallback(response) {
-                self.lessons = response.data;
-                
-                repopulate();
-            }, function errorCallback(response) {
-                self.lessons = [];
-                
-                repopulate();
-            });
+            self.lessons = response.data;
+
+            repopulate();
+        }, function errorCallback(response) {
+            self.lessons = [];
+
+            repopulate();
+        });
 
         this.year = today.getFullYear();
 
         this.daysInMonth = daysInAMonth(today.getMonth(), this.year);
-
-        console.log(this.finalMonth);
 
         this.paddingMonth = new Date(this.year, today.getMonth(), 1).getDay();
         this.weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -82,11 +79,11 @@ component('bookLesson', {
 
             $http.get('/api/lessons/' + self.month).then(function successCallback(response) {
                 self.lessons = response.data;
-                
+
                 repopulate();
             }, function errorCallback(response) {
                 self.lessons = [];
-                
+
                 repopulate();
             });
         }
@@ -110,13 +107,59 @@ component('bookLesson', {
 
             $http.get('/api/lessons/' + self.month).then(function successCallback(response) {
                 self.lessons = response.data;
-                
+
                 repopulate();
             }, function errorCallback(response) {
                 self.lessons = [];
-                
+
                 repopulate();
             });
+        }
+
+        this.open = function (day) {
+            var modalInstance = $uibModal.open({
+                size: 'lg',
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: 'book-modal/book-modal.template.html',
+                controller: function BookLessonController($uibModalInstance, data, month) {
+                    var me = this;
+
+                    me.close = function () {
+                        $uibModalInstance.close();
+                    };
+                    
+                    me.data = data;
+                    me.day = day.toString();
+                    var lastNum = me.day.substr(me.day.length - 1);
+                    
+                    if(day > 3 && day < 21) {
+                        me.day = me.day + "th";
+                    } else if(lastNum == 1) {
+                        me.day = me.day + "st";
+                    } else if (lastNum == 2) {
+                        me.day = me.day + "nd";
+                    } else if (lastNum == 3) {
+                        me.day = me.day + "rd";
+                    } else {
+                        me.day = me.day + "th";
+                    }
+                    
+                    me.month = month;
+                    
+                    me.lessonsInDay = me.data[day-1][1];
+                },
+                controllerAs: '$ctrl',
+                resolve: {
+                    data: function () {
+                        return self.finalMonth;
+                    },
+                    
+                    month: function () {
+                        return self.month;
+                    }
+                }
+            })
         }
     }
 });
