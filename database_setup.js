@@ -16,16 +16,6 @@ var createTables = function (connection, callback) {
             'Data text,' +
             'PRIMARY KEY(SessionID))', (err) => done(err)),
 
-        (done) => connection.query('CREATE TABLE IF NOT EXISTS Lesson (' +
-            'LessonID INT NOT NULL UNIQUE AUTO_INCREMENT,' +
-            'TeacherName VARCHAR(50) NOT NULL,' +
-            'Month VARCHAR(20) NOT NULL,' +
-            'Day int(2) NOT NULL,' +
-            'StartTime time NOT NULL,' +
-            'EndTime time NOT NULL,' +
-            'Available boolean NOT NULL,' +
-            'PRIMARY KEY(LessonID))', (err) => done(err)),
-                     
         (done) => connection.query('CREATE TABLE IF NOT EXISTS User (' +
             'UserID VARCHAR(100) NOT NULL UNIQUE,' +
             'FName VARCHAR(50),' +
@@ -35,9 +25,40 @@ var createTables = function (connection, callback) {
             'SessionLink VARCHAR(128) UNIQUE,' +
             'PRIMARY KEY(UserID),' +
             'FOREIGN KEY(SessionLink) REFERENCES Session(SessionID)' +
+            'ON DELETE CASCADE ON UPDATE CASCADE)', (err) => done(err)),
+
+        (done) => connection.query('CREATE TABLE IF NOT EXISTS Lesson (' +
+            'LessonID INT NOT NULL UNIQUE AUTO_INCREMENT,' +
+            'TeacherID varchar(50) NOT NULL,' +
+            'TeacherName VARCHAR(50) NOT NULL,' +
+            'Year int(4) NOT NULL,' +
+            'Month VARCHAR(20) NOT NULL,' +
+            'Day int(2) NOT NULL,' +
+            'StartTime time NOT NULL,' +
+            'EndTime time NOT NULL,' +
+            'Building VARCHAR(30) NOT NULL,' +
+            'Room VARCHAR(30) NOT NULL,' +
+            'Available boolean NOT NULL,' +
+            'StudentID varchar(50),' +
+            'StudentName varchar(50),' +
+            'PRIMARY KEY(LessonID),' +
+            'FOREIGN KEY(TeacherID) REFERENCES User(UserID)' +
+            'ON DELETE CASCADE ON UPDATE CASCADE,',
+            'FOREIGN KEY(StudentID) REFERENCES User(UserID)' +
+            'ON DELETE CASCADE ON UPDATE CASCADE)', (err) => done(err)),
+
+        (done) => connection.query('CREATE TABLE IF NOT EXISTS Building (' +
+            'BuildingName varchar(50) NOT NULL UNIQUE,' +
+            'Campus varchar(50),' +
+            'PRIMARY KEY(BuildingName))', (err) => done(err)),
+
+        (done) => connection.query('CREATE TABLE IF NOT EXISTS Room (' +
+            'RoomName varchar(30) NOT NULL UNIQUE,' +
+            'BuildingName varchar(50) NOT NULL,' +
+            'PRIMARY KEY(RoomName),' +
+            'FOREIGN KEY(BuildingName) REFERENCES Building(BuildingName)' +
             'ON DELETE CASCADE ON UPDATE CASCADE)', (err) => done(err))], (err) => callback(err, connection));
 }
-
 
 var setup = function (cb) {
     async.waterfall([

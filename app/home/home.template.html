@@ -1,27 +1,33 @@
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <img src="../img/KCLGSLogo.png" id="navLogo" alt="King's College London Logo" style="width: 72px; height: 72px; margin: -5px 15px 0px -5px;">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand verticalAlign" href="#home">KCL Guitar Society</a>
-            </div>
-            <div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#aboutUs" class="navbarOptions">About Us</a></li>
-                        <li><a href="#bookALesson" class="navbarOptions">Book A Lesson</a></li>
-                        <li><a href="#contactUs" class="navbarOptions">Contact Us</a></li>
-                    </ul>
-                </div>
+<nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <img src="../img/KCLGSLogo.png" id="navLogo" alt="King's College London Logo" style="width: 72px; height: 72px; margin: -5px 15px 0px -5px;">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand verticalAlign" href="#home">KCL Guitar Society</a>
+        </div>
+        <div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#aboutUs" class="navbarOptions">About Us</a></li>
+                    <li><a href="#bookALesson" class="navbarOptions">Book A Lesson</a></li>
+                    <li><a href="#contactUs" class="navbarOptions">Contact Us</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="yourLessonsNav"><a data-target="#" href="#!/yourLessons" class="navbarOptions">Your Lessons</a></li>
+                    <li id="signInNav" ng-if="!$ctrl.loggedIn"><a data-target="#" href="#!/signIn" class="navbarOptions">Sign In</a></li>
+                    <li id="signInNav" ng-if="$ctrl.loggedIn"><a data-target="#" ng-click="$ctrl.logout()" class="navbarOptions">Sign Out</a></li>
+
+                </ul>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
-<div id="homeBody" data-spy="scroll" data-target=".navbar">
+<div id="homeBody" data-spy="scroll" data-target=".navbar" data-offset="50">
 
     <div id="home">
 

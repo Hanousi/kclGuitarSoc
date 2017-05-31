@@ -1,4 +1,6 @@
 'use strict'
 
 angular.
-module('home', []);
+module('home', [
+    'duScroll'
+]);

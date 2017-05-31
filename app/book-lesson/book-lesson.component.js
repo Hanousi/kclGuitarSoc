@@ -38,8 +38,10 @@ component('bookLesson', {
         var today = new Date()
 
         this.month = monthsInAYear[today.getMonth()];
+        
+        this.year = today.getFullYear();
 
-        $http.get('/api/lessons/' + self.month).then(function successCallback(response) {
+        $http.get('/api/lessons/' + self.month + '/' + self.year).then(function successCallback(response) {
             self.lessons = response.data;
 
             repopulate();
@@ -48,9 +50,7 @@ component('bookLesson', {
 
             repopulate();
         });
-
-        this.year = today.getFullYear();
-
+        
         this.daysInMonth = daysInAMonth(today.getMonth(), this.year);
 
         this.paddingMonth = new Date(this.year, today.getMonth(), 1).getDay();
@@ -61,6 +61,9 @@ component('bookLesson', {
         }
 
         this.nextMonth = function nextMonth(iMonth) {
+            
+            self.finalMonth = [];
+            
             var numberMonth = monthsInAYear.indexOf(iMonth);
 
             var newYear = this.year;
@@ -77,7 +80,7 @@ component('bookLesson', {
             self.daysInMonth = daysInAMonth(newMonth, newYear);
             self.paddingMonth = new Date(newYear, newMonth, 1).getDay();
 
-            $http.get('/api/lessons/' + self.month).then(function successCallback(response) {
+            $http.get('/api/lessons/' + self.month + '/' + self.year).then(function successCallback(response) {
                 self.lessons = response.data;
 
                 repopulate();
@@ -89,6 +92,9 @@ component('bookLesson', {
         }
 
         this.prevMonth = function prevMonth(iMonth) {
+            
+            self.finalMonth = [];
+            
             var numberMonth = monthsInAYear.indexOf(iMonth);
 
             var newYear = this.year;
@@ -105,7 +111,7 @@ component('bookLesson', {
             self.daysInMonth = daysInAMonth(newMonth, newYear);
             self.paddingMonth = new Date(newYear, newMonth, 1).getDay();
 
-            $http.get('/api/lessons/' + self.month).then(function successCallback(response) {
+            $http.get('/api/lessons/' + self.month + '/' + self.year).then(function successCallback(response) {
                 self.lessons = response.data;
 
                 repopulate();
@@ -145,9 +151,31 @@ component('bookLesson', {
                         me.day = me.day + "th";
                     }
                     
+                    me.buyLesson = function buyLesson(lessonId) {
+                        window.location.href = '#!/book/' + lessonId;
+                        me.close();
+                    }
+                    
                     me.month = month;
                     
                     me.lessonsInDay = me.data[day-1][1];
+                                                            
+                    me.availableLessons = function () {
+                        var counter = 0;
+                        
+                        for(var i = 0; i < me.lessonsInDay.length; ++i) {
+
+                            if(me.lessonsInDay[i].Available == 0) {
+                                counter++;
+                            }
+                        }
+                                                
+                        if(counter == me.lessonsInDay.length) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
                 },
                 controllerAs: '$ctrl',
                 resolve: {

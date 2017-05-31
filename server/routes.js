@@ -39,7 +39,10 @@ module.exports = function (app, passport) {
     var authLevel = function (accessGroup) {
         return function (req, res, next) {
             if (req.user.AccessGroup <= accessGroup) next();
-            else res.sendStatus(401);
+            else {
+                res.sendStatus(401);
+                console.log(req);
+            }
         };
     };
 
@@ -905,7 +908,7 @@ module.exports = function (app, passport) {
     });
 
     app.post("/api/lessons", bodyParser.json(), authLevel(1), function (req, res) {
-        lessons.createLesson(req.body.teacherName, req.body.month, req.body.day, req.body.startTime, req.body.endTime, req.body.available, function (err, data) {
+        lessons.createLesson(req.body.teacherId, req.body.teacherName, req.body.year, req.body.month, req.body.day, req.body.startTime, req.body.endTime, req.body.building, req.body.room, req.body.available, req.body.studentId, req.body.studentName, function (err, data) {
             if (err) {
                 if (err.code == 'ER_DUP_ENTRY') res.sendStatus(409);
                 else {
@@ -918,7 +921,7 @@ module.exports = function (app, passport) {
             }
         });
     });
-    
+
     app.get("/api/lessons/:month", function (req, res) {
         lessons.getLessonByMonth(req.params.month, function (err, data) {
             if (err) {
@@ -928,6 +931,58 @@ module.exports = function (app, passport) {
                     res.sendStatus(500);
                 }
             } else res.send(data);
+        });
+    });
+
+    app.get("/api/user/lessons/:teacherId/:studentId/:month/:nextMonth/:year/:nextYear", function (req, res) {
+        lessons.getUserLessons(req.params.teacherId, req.params.studentId, req.params.month, req.params.nextMonth, req.params.year, req.params.nextYear, function (err, data) {
+            if (err) {
+                if (err.message == 'NOT_FOUND') res.sendStatus(404);
+                else {
+                    console.error(err);
+                    res.sendStatus(500);
+                }
+            } else res.send(data);
+        });
+    });
+
+    app.get("/api/lesson/:lessonId", function (req, res) {
+        lessons.getLessonById(req.params.lessonId, function (err, data) {
+            if (err) {
+                if (err.message == 'NOT_FOUND') res.sendStatus(404);
+                else {
+                    console.error(err);
+                    res.sendStatus(500);
+                }
+            } else res.send(data);
+        });
+    });
+
+    app.get("/api/lessons/:month/:year", function (req, res) {
+        lessons.getLessonByMonthAndYear(req.params.month, req.params.year, function (err, data) {
+            if (err) {
+                if (err.message == 'NOT_FOUND') res.sendStatus(404);
+                else {
+                    console.error(err);
+                    res.sendStatus(500);
+                }
+            } else res.send(data);
+        });
+    });
+
+    app.put("/api/lesson", bodyParser.json(), authLevel(1), function (req, res) {
+        console.log(req.body.StudentID);
+        console.log(req.body.StudentName);
+        console.log(req.body.LessonID);
+
+        lessons.bookLesson(req.body.StudentID, req.body.StudentName, req.body.LessonID, function (err) {
+            if (err) {
+                if (err.message == 'NOT_FOUND') res.sendStatus(404);
+                else {
+                    console.error(err);
+                    res.sendStatus(500);
+                }
+            } else res.sendStatus(204);
         });
     });
 
@@ -2014,11 +2069,13 @@ module.exports = function (app, passport) {
                     httpOnly: true
                 }
             );
+            console.log('hi');
             res.cookie('selector_user', req.user, {
                 maxAge: req.session.cookie.maxAge,
                 expires: req.session.cookie.expires,
                 httpOnly: false
             });
+            console.log('hi2')
             res.sendStatus(200);
         });
 

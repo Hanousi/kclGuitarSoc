@@ -1,11 +1,73 @@
 body {
     background-color: black;
     color: white;
+    width: 98.9%;
 }
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+/*Sign In
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#userId {
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#password {
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#signInButton {
+    font-weight: 200;
+    font-size: 22px;
+}
+
+#cbox {
+    vertical-align: 3px;
+    transform: scale(1.5);
+    margin-left: 5%;
+}
+
+.rememberMe{
+    text-align: center;
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    color: white;
+    font-weight: 200;
+}
+
+#userIdAlert {
+    float: right;
+    font-weight: 200;
+    font-size: 22px;
+    color: red;
+}
+
+#passwordAlert {
+    float: right;
+    font-weight: 200;
+    font-size: 22px;
+    color: red;
+}
+
+/*Home
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 .navbar {
     height: 8%;
     opacity: 40%;
+}
+
+#signInNav {
+    float: right;
 }
 
 #homeBody {
@@ -50,8 +112,198 @@ body {
     line-height: 170% !important;
 }
 
-.navbar-header {
-/*    margin-right: 25% !important;*/
+/*PurchaseLesson
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.lessonInfo {
+    border: 2px solid white;
+    border-radius: 15px;
+    background-color: dimgrey;
+    padding: 5px 10px 5px 10px;
+    font-size: 18px;
+}
+
+.yourLessonInfo {
+    border: 2px solid white;
+    border-radius: 15px;
+    background-color: dimgrey;
+    padding: 5px 10px 5px 10px;
+    font-size: 22px;
+    margin-bottom: 2%;
+}
+
+.yourBookedLessonInfo {
+    border: 2px solid lightgreen;
+    border-radius: 15px;
+    background-color: dimgrey;
+    padding: 5px 10px 5px 10px;
+    font-size: 22px;
+    margin-bottom: 2%;
+}
+
+.reminders {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    color: white;
+    font-weight: 200;
+    font-size: 22px;
+    text-align: center;
+}
+
+#bookButton {
+    font-weight: 200;
+    font-size: 22px;
+    margin-top: 2%;
+}
+
+/*AddLesson
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#teacherNameAlert {
+    float: right;
+    font-weight: 200;
+    font-size: 22px;
+    color: red;
+}
+
+#dateAlert {
+    float: right;
+    font-weight: 200;
+    font-size: 22px;
+    color: red;
+}
+
+#timeAlert {
+    float: right;
+    font-weight: 200;
+    font-size: 22px;
+    color: red;
+}
+
+.addTitle {
+    margin-top: 1%;
+    text-align: center;
+    font-size: 32px;
+}
+
+.formTitle {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    color: white;
+    font-weight: 200;
+    font-size: 36px;
+}
+
+.addForm{
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    color: white;
+    font-weight: 200;
+}
+
+.inputTitle {
+    font-weight: 200;
+    font-size: 22px;
+}
+
+#teacherName {
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#date {
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#startTime {
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#building {
+    -webkit-appearance: none;
+    font-size: 18px;
+    color: black;
+    text-align: left;
+    font-weight: 200;
+    height: 44px;
+    width: 100%;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 15px;
+    padding-left: 16px;
+}
+
+.select2-results__option {
+    color: black;
+}
+
+.select2-selection__arrow {
+    top: 22% !important;
+    margin-right: 7px;
+}
+
+.select2-container--default .select2-selection--single {
+    height: 46px !important;
+    font-size: 18px;
+    padding: 7px;
+    border-radius: 15px !important;
+    outline: 0;
+}
+
+#submitLesson {
+    float: right;
+    font-size: 26px;
+    font-weight: 200;
+}
+
+#room {
+    -webkit-appearance: none;
+    font-size: 18px;
+    color: black;
+    text-align: left;
+    height: 44px;
+    width: 100%;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    padding-left: 16px;
+}
+
+.formDrop {
+    width: 100%;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/*BookLesson
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.addLesson {
+    float: left;
+    color: white;
+    font-size: 25px;
+    margin: 25% 0% 0% 20%;
+}
+
+.addLesson:hover {
+    color: green;
+    -webkit-transition: color 500ms ease-out;
+    -moz-transition: color 500ms ease-out;
+    -ms-transition: color 500ms ease-out;
+    -o-transition: color 500ms ease-out;
+    transition: color 500ms ease-out;
 }
 
 .extraLeft {
@@ -66,6 +318,7 @@ body {
     margin-top: 1%;
     text-align: center;
     font-size: 32px;
+    padding-left: 9%;
 }
 
 .calenderHeader {
@@ -138,8 +391,37 @@ a:hover {
     color: inherit;
 }
 
+
 /*BookLessonModal
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.bottomBorder {
+    border-bottom: 2px solid;
+    border-bottom-color: grey;
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.timing {
+    float: right;
+    font-size: 14px;
+}
+
+.extraRightLesson {
+    margin-left: -8px;
+}
+
+.bookLesson {
+    float: right;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.extraTop {
+    font-size: 20px;
+}
 
 .noResults {
     text-align: center;
