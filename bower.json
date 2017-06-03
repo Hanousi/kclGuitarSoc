@@ -17,6 +17,6 @@
         "jquery": "2.2.x",
         "angular-ui-bootstrap": "x",
         "angular-bootstrap": "x",
-        "angular-scroll": "x"
+        "ngSmoothScroll": "x"
     }
 }

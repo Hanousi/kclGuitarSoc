@@ -2,7 +2,7 @@ angular.
 module('home').
 component('home', {
     templateUrl: 'home/home.template.html',
-    controller: function HomeController($scope, $http, $cookies) {
+    controller: function HomeController($scope, $http, $cookies, $route, $anchorScroll, $location) {
         var self = this;
 
         self.loggedIn = false;
@@ -20,26 +20,11 @@ component('home', {
             location.reload();
         }
 
-        //        $(function () {
-        //            $('#myNavbar').bind('click', 'ul li a', function (event) {
-        //                $.scrollTo(event.target.hash, 550);
-        //            });
-        //        });
-
-        $(".bs-js-navbar-scrollspy li a[href^='#']").on('click', function (event) {
-            var target;
-            target = this.hash;
-
-            event.preventDefault();
-
-            var navOffset;
-            navOffset = $('#navbar').height();
-
-            return $('html, body').animate({
-                scrollTop: $(this.hash).offset().top - navOffset
-            }, 300, function () {
-                return window.history.pushState(null, null, target);
-            });
-        });
+        self.scrollTo = function (id) {
+            var old = $location.hash();
+            $location.hash(id);
+            $anchorScroll();
+            $location.hash(old);
+        }
     }
 });

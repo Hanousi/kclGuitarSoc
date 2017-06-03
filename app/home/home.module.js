@@ -2,5 +2,5 @@
 
 angular.
 module('home', [
-    'duScroll'
+    'smoothScroll'
 ]);

@@ -3,13 +3,13 @@
 angular.module('KCLGS', [
  'home',
  'signIn',
- 'purchaseLesson',    
+ 'purchaseLesson',
  'bookLesson',
  'addLesson',
- 'yourLessons',    
+ 'yourLessons',
  'ngRoute',
  'ngCookies',
  'ngAnimate',
- 'duScroll',
+ 'smoothScroll',
  'ui.bootstrap'
 ]);

@@ -3,7 +3,7 @@ angular.module('KCLGS').config(['$locationProvider', '$routeProvider',
   $locationProvider.hashPrefix('!');
 
   $routeProvider.
-  when('/home', {
+  when('/home/', {
    template: '<home></home>'
   }).
   when('/book', {

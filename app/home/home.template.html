@@ -7,16 +7,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand verticalAlign" href="#home">KCL Guitar Society</a>
+            <a class="navbar-brand verticalAlign" ng-click="$ctrl.scrollTo('home')">KCL Guitar Society</a>
         </div>
         <div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="#aboutUs" class="navbarOptions">About Us</a></li>
-                    <li><a href="#bookALesson" class="navbarOptions">Book A Lesson</a></li>
-                    <li><a href="#contactUs" class="navbarOptions">Contact Us</a></li>
+                    <li><a ng-click="$ctrl.scrollTo('aboutUsAnchor')" class="navbarOptions">About Us</a></li>
+                    <li><a ng-click="$ctrl.scrollTo('bookALessonAnchor')" class="navbarOptions">Book A Lesson</a></li>
+                    <li><a ng-click="$ctrl.scrollTo('contactUsAnchor')" class="navbarOptions">Contact Us</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" id="#myNavbar">
                     <li id="yourLessonsNav"><a data-target="#" href="#!/yourLessons" class="navbarOptions">Your Lessons</a></li>
                     <li id="signInNav" ng-if="!$ctrl.loggedIn"><a data-target="#" href="#!/signIn" class="navbarOptions">Sign In</a></li>
                     <li id="signInNav" ng-if="$ctrl.loggedIn"><a data-target="#" ng-click="$ctrl.logout()" class="navbarOptions">Sign Out</a></li>
@@ -27,39 +27,123 @@
     </div>
 </nav>
 
-<div id="homeBody" data-spy="scroll" data-target=".navbar" data-offset="50">
+<div id="homeBody">
 
     <div id="home">
+
+        <div id="homeTitle">
+
+            <img src="../img/KCLGSLogo.png" style="width: 540px; height 540">
+
+        </div>
+        <div style="margin-top: 4%;">
+
+            <div class="col-sm-6" id="BALBtnDiv">
+
+                <a ng-click="$ctrl.scrollTo('bookALessonAnchor')">
+                    <button class="homeButton hvr-bounce-to-right">Book a lesson</button>
+                </a>
+
+            </div>
+            <div class="col-sm-6" id="FOMBtnDiv">
+
+                <a ng-click="$ctrl.scrollTo('aboutUsAnchor')">
+                    <button class="homeButton hvr-bounce-to-left">Find out more</button>
+                </a>
+
+            </div>
+
+        </div>
 
     </div>
 
     <div id="aboutUs">
 
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Dropdown
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-            </ul>
+        <a class="anchor" id="aboutUsAnchor"></a>
+
+        <div class="row" id="aUContent">
+
+            <div class="col-sm-1" id="aUHeader">
+
+
+
+            </div>
+
+            <div class="col-sm-11" id="aUTitle">
+
+                Who are the KCL Guitar Society?
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-1"></div>
+
+            <div class="col-sm-6" id="auDesc">
+
+                The KCL Guitar Society was founded by Hani Tawil and Irid Kotoni in 2017. With a univeristy as large as Kings College and a passion for playing the guitar which could not be shared, they started a society where all guitarists and those who are interested in learning can meet and play together. From giving a couple of lessons a week the society has flourished into a active one with an always expanding team of organsizers, teachers and members. We currently host weekly jam sessions for all to attend and provide lessons to new and beginner guitarists.
+
+            </div>
+
+            <div class="col-sm-5">
+
+                <img src="../img/hHDMrdg.jpg" style="width: 400px; height:230px; margin-left: 10%;">
+
+            </div>
+
         </div>
 
     </div>
 
     <div id="bookALesson">
 
+        <a class="anchor" id="bookALessonAnchor"></a>
 
+        <div class="row" id="bALContent">
+
+            <div class="col-sm-11" id="bALTitle">
+
+                Book A Lesson Today
+
+            </div>
+
+            <div class="col-sm-1" id="bALHeader">
+
+
+
+            </div>
+
+        </div>
+        
+        <div class="row">
+        
+            <div class="col-sm-5" id="bALBtnContainer">
+            
+                <a href="#!/book"><button class="homeButton hvr-bounce-to-top">Book Lessons Now</button></a>
+            
+            </div>
+            
+            <div class="col-sm-6" id="bALDesc">
+            
+                The society offers lessons to new or beginner level guitarists to give students at KCL the opprotunity to learn to play an instrument during their studies at an affordable price. Lessons are taught weekly for 30 minutes and each session costs £7. To book a lesson, log into the website and enter the booking portal to choose a teacher and location to be taught in. It is highly reccomended to stick with the same teacher when booking lessons. Once you book a lesson enter the KCLGS Slack community to contact your tutor to further discuss your lessons and further communicate and learn from fellow students.
+            
+            </div>
+            
+            <div class="col-sm-1">
+            
+            
+            
+            </div>
+        
+        </div>
 
     </div>
 
     <div id="contactUs">
 
-
+        <a class="anchor" id="contactUsAnchor"></a>
 
     </div>
 
