@@ -21,6 +21,12 @@ angular.module('KCLGS').config(['$locationProvider', '$routeProvider',
   when('/signIn', {
    template: '<sign-in></sign-in>'
   }).
+  when('/forgotPassword', {
+   template: '<forgot-password></forgot-password>'
+  }).
+  when('/createAccount', {
+   template: '<create-account></create-account>'
+  }).
   otherwise({
    redirectTo: ('/home')
   });

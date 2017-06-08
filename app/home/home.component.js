@@ -2,7 +2,7 @@ angular.
 module('home').
 component('home', {
     templateUrl: 'home/home.template.html',
-    controller: function HomeController($scope, $http, $cookies, $route, $anchorScroll, $location) {
+    controller: function HomeController($scope, $http, $cookies, $route, $anchorScroll, $location, $timeout) {
         var self = this;
 
         self.loggedIn = false;
@@ -15,9 +15,9 @@ component('home', {
             }
         }
 
-        self.logout = function () {
+        self.logout = function() {
             $http.get("/logout");
-            location.reload();
+            $timeout(location.reload());
         }
 
         self.scrollTo = function (id) {
@@ -25,6 +25,18 @@ component('home', {
             $location.hash(id);
             $anchorScroll();
             $location.hash(old);
+        }
+        
+        self.enterPortal = function() {
+            if(self.loggedIn) {
+                location.href = '#!/book';
+            } else {
+                alert("You can only enter the portal once you have signed in.")
+            }
+        }
+        
+        self.sendTo = function(dest) {
+            location.href(dest);
         }
     }
 });

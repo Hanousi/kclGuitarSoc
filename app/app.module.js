@@ -11,5 +11,7 @@ angular.module('KCLGS', [
  'ngCookies',
  'ngAnimate',
  'smoothScroll',
- 'ui.bootstrap'
+ 'ui.bootstrap',
+ 'forgotPassword',
+ 'createAccount'    
 ]);
