@@ -69,7 +69,7 @@ passport.use(
             passReqToCallback : true 
         },
         function(req, userID, password, callback) {
-						users.addUser(userID, req.body.fName, req.body.lName, password, 2, (err, rows, hash)=>{
+						users.addUser(userID, req.body.fName, req.body.lName, password, 2, 0, (err, rows, hash)=>{
 								if(err){
 									if(err.message == 'USER_EXISTS') callback(null, false);
 									else return callback(err);

@@ -18,20 +18,20 @@ var nodemailer = require('nodemailer');
  * @param {function} callback - What to do with the result of the function.
  * 
  */
-function handleMail(text, html, userAddress, callback) {
+function handleMail(text, html, userAddress, subject, callback) {
     
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: process.env.MAIL_USER ||'moduleselectionnoreply@gmail.com',
+            user: process.env.MAIL_USER ||'kclguitarnoreply@gmail.com',
             pass: process.env.MAIL_PASSWORD || 'C:jdP2k2&&%rF]]!' 
         }
     });
 
 		var mailOptions = {
-				from: 'moduleselectionnoreply@gmail.com', 
+				from: 'kclguitarnoreply@gmail.com', 
 				to: userAddress, 
-				subject: 'Password Reset' 	
+				subject: subject 	
 		};
 		
 		text ? mailOptions.text = text : mailOptions.html = html;		

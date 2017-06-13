@@ -27,6 +27,9 @@ angular.module('KCLGS').config(['$locationProvider', '$routeProvider',
   when('/createAccount', {
    template: '<create-account></create-account>'
   }).
+   when('/verify/:inUserID/:inToken', {
+   template: '<verify></verify>'
+  }).
   otherwise({
    redirectTo: ('/home')
   });

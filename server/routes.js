@@ -946,6 +946,18 @@ module.exports = function (app, passport) {
         });
     });
 
+    app.post('/verify', bodyParser.json(), validator(validationConf.USER_OPTIONS), validateSchemas([validationConf.USERID_EMAIL_SCHEMA]), function (req, res) {
+        users.verification(req.headers.host, req.body.userID, req.body.token, function (err) {
+            if (err) {
+                if (err.message == 'USER_DOESN\'T_EXIST') res.sendStatus(401);
+                else {
+                    console.error(err);
+                    res.sendStatus(500);
+                }
+            } else res.sendStatus(200);
+        });
+    });
+
     app.get("/api/lesson/:lessonId", function (req, res) {
         lessons.getLessonById(req.params.lessonId, function (err, data) {
             if (err) {

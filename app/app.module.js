@@ -13,5 +13,6 @@ angular.module('KCLGS', [
  'smoothScroll',
  'ui.bootstrap',
  'forgotPassword',
- 'createAccount'    
+ 'createAccount',
+ 'verify'
 ]);

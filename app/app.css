@@ -54,6 +54,38 @@ a.anchor {
 /*Create an Account
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
+#aCAlert {
+    display: none;
+}
+
+#fNAlert {
+    display: none;
+}
+
+#lNAlert {
+    display: none;
+}
+
+#cUserIdAlert {
+    display: none;
+}
+
+#cPasswordAlert {
+    display: none;
+}
+
+#cCPasswordAlert {
+    display: none;
+}
+
+#wCPasswordAlert {
+    display: none;
+}
+
+#accessCode {
+    display: none;
+}
+
 #btnGroupContainer {
     text-align: center;
 }
@@ -118,6 +150,13 @@ a.anchor {
     margin-bottom: 2%;
     color: white;
     font-weight: 200;
+}
+
+.alerts {
+    float: right;
+    font-weight: 200;
+    font-size: 22px;
+    color: red;
 }
 
 #userIdAlert {
