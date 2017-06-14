@@ -1,0 +1,86 @@
+<div class="row">
+
+    <div class="col-xs-12">
+
+        <a href="#!/home">
+            <p class="addTitle">KCL Guitar Society</p>
+        </a>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xs-12">
+
+        <div class="row">
+
+            <div class="col-xs 12">
+
+                <div class="formTitle">
+
+                    Your Lessons
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs 12">
+
+                <div class="addForm">
+
+                    <div ng-repeat="lesson in $ctrl.finalLessons">
+
+                        <div ng-if="lesson.StudentID == null" class="yourLessonInfo">
+
+                            <div class="row">
+
+                                <div class="col-xs-9">Teacher Name: {{lesson.TeacherName}}</div>
+                                <div class="col-xs-3">Time: {{lesson.niceDateS + " - " + lesson.niceDateE}}</div>
+
+                            </div>
+                            <div class="row timeInfo">
+
+                                <div class="col-xs-9">Location: {{lesson.Building + ", " + lesson.Room}}</div>
+                                <div class="col-xs-3">Date: {{lesson.Day + "/" + ($ctrl.monthsInAYear.indexOf(lesson.Month) + 1) + "/" + lesson.Year}}</div>
+
+                            </div>
+
+                        </div>
+
+                        <div ng-if="lesson.StudentID != null" class="yourBookedLessonInfo">
+
+                            <div class="row">
+
+                                <div class="col-xs-9">Teacher Name: {{lesson.TeacherName}}</div>
+                                <div class="col-xs-3">Time: {{lesson.niceDateS + " - " + lesson.niceDateE}}</div>
+
+                            </div>
+                            <div class="row timeInfo">
+
+                                <div class="col-xs-9">Location: {{lesson.Building + ", " + lesson.Room}}</div>
+                                <div class="col-xs-3">Date: {{lesson.Day + "/" + ($ctrl.monthsInAYear.indexOf(lesson.Month) + 1) + "/" + lesson.Year}}</div>
+
+                            </div>
+                            <div class="row timeInfo">
+
+                                <div class="col-xs-9">Student Name: {{lesson.StudentName}}</div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

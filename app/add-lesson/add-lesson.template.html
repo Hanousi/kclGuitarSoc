@@ -1,0 +1,104 @@
+<div class="row">
+
+    <div class="col-xs-12">
+
+        <a href="#!/home">
+            <p class="addTitle">KCL Guitar Society</p>
+        </a>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xs-12">
+
+        <div class="row">
+
+            <div class="col-xs 12">
+
+                <div class="formTitle">
+
+                    Add a lesson
+
+                    <button id="submitLesson" ng-click="$ctrl.submitLesson()" class="btn btn-default">Submit</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs 12">
+
+                <div class="addForm">
+
+                    <label class="inputTitle">Lesson's date:</label>
+                    <label id="dateAlert"></label>
+                    <div class="input-group input-group-lg" style="width: 100%;">
+                        <input ng-model="$ctrl.inDate" type="date" id="date" class="form-control" aria-describedby="Date">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs 12">
+
+                <div class="addForm">
+
+                    <label class="inputTitle">Start time:</label>
+                    <label id="timeAlert"></label>
+                    <div class="input-group input-group-lg" style="width: 100%;">
+                        <input ng-model="$ctrl.inTime" type="time" id="startTime" class="form-control" aria-describedby="Time">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs 12">
+
+                <div class="addForm">
+
+                    <label class="inputTitle">Building:</label>
+                    <select id="building">
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs 12">
+
+                <div class="addForm">
+
+                    <label class="inputTitle">Room:</label>
+                    <select id="room">
+                    </select>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

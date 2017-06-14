@@ -1,0 +1,54 @@
+<div class="modal-content view"><i class="glyphicon glyphicon-remove" id="windowCloseButtons" ng-click="$ctrl.close()"></i>
+    <div class="modal-header">
+        <h3 class="modal-title">{{$ctrl.day + ' ' + $ctrl.month}}</h3>
+    </div>
+
+    <div class="modal-body">
+
+        <div class="noResults" ng-if="$ctrl.availableLessons()">
+
+            <h3>No lessons on this day</h3>
+
+        </div>
+
+        <div ng-if="lesson.Available == 1" class="moreLesson" ng-repeat="lesson in $ctrl.lessonsInDay">
+
+            <div class="row">
+
+                <div class="col-xs-12 extraTop">
+
+                    {{lesson.TeacherName}} <span class="timing">{{lesson.niceDateS + ' - ' + lesson.niceDateE}}</span>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-xs-12 extraBottom">
+
+                    {{lesson.Building + ', ' + lesson.Room}}
+
+                    <span class="timing">
+                        <span ng-click="$ctrl.buyLesson(lesson.LessonID)" class="glyphicon glyphicon-menu-right bookLesson extraRightLesson" aria-hidden="true"></span>
+                        <span ng-click="$ctrl.buyLesson(lesson.LessonID)" class="glyphicon glyphicon-menu-right bookLesson" aria-hidden="true"></span>
+                    </span>
+
+                </div>
+
+            </div>
+            
+            <div class="row">
+            
+                <div class="col-xs-12">
+                
+                    <div class="bottomBorder"></div>
+                
+                </div>
+            
+            </div>
+
+        </div>
+
+    </div>
+</div>

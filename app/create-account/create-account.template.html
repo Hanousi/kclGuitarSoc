@@ -1,0 +1,161 @@
+<div class="row">
+
+    <div class="col-xs-12">
+
+        <a href="#!/home">
+            <p class="addTitle">KCL Guitar Society</p>
+        </a>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xs 12">
+
+        <div class="formTitle">
+
+            Create a Account
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xs-12" id="btnGroupContainer">
+
+        <div class="btn-group" role="group" aria-label="Account Type">
+            <button type="button" id="studentBtn" ng-click="$ctrl.studentOption()" class="btn btn-default tOrSBtn active">Student</button>
+            <button type="button" id="teacherBtn" ng-click="$ctrl.teacherOption()" class="btn btn-default tOrSBtn">Teacher</button>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row" id="accessCode">
+
+    <div class="col-xs 12">
+
+        <div class="addForm">
+
+            <label class="inputTitle">Teacher Access Code:</label>
+            <label id="aCAlert" class="alerts"><span style='float: right;'><i style='margin-right:5px;' class='glyphicon glyphicon-warning-sign'></i>Please enter the correct teacher code</span></label>
+            <div class="input-group input-group-lg" style="width: 100%;">
+                <input ng-model="$ctrl.inACode" type="name" class="form-control formInput" placeholder="Enter Access Code" aria-describedby="Access Code">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xs 12">
+
+        <div class="addForm">
+
+            <label class="inputTitle">First Name:</label>
+            <label id="fNAlert" class="alerts"><span style='float: right;'><i style='margin-right:5px;' class='glyphicon glyphicon-warning-sign'></i>Please enter your first name</span></label>
+            <div class="input-group input-group-lg" style="width: 100%;">
+                <input ng-model="$ctrl.inFName" type="name" class="form-control formInput" placeholder="Enter First Name" aria-describedby="First Name">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xs 12">
+
+        <div class="addForm">
+
+            <label class="inputTitle">Last Name:</label>
+            <label id="lNAlert" class="alerts"><span style='float: right;'><i style='margin-right:5px;' class='glyphicon glyphicon-warning-sign'></i>Please enter your last name</span></label>
+            <div class="input-group input-group-lg" style="width: 100%;">
+                <input ng-model="$ctrl.inLName" type="name" class="form-control formInput" placeholder="Enter Last Name" aria-describedby="Last Name">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xs 12">
+
+        <div class="addForm">
+
+            <label class="inputTitle">King's e-mail address:</label>
+            <label id="cUserIdAlert" class="alerts"><span style='float: right;'><i style='margin-right:5px;' class='glyphicon glyphicon-warning-sign'></i>Please enter a valid e-mail address</span></label>
+            <div class="input-group input-group-lg" style="width: 100%;">
+                <input ng-model="$ctrl.inUserId" type="email" id="userId" class="form-control" placeholder="KNumber@kcl.ac.uk" aria-describedby="User ID">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xs 12">
+
+        <div class="addForm">
+
+            <label class="inputTitle">Password:</label>
+            <label id="cPasswordAlert" class="alerts"><span style='float: right;'><i style='margin-right:5px;' class='glyphicon glyphicon-warning-sign'></i>Please enter your password</span></label>
+            <div class="input-group input-group-lg" style="width: 100%;">
+                <input ng-model="$ctrl.inPassword" type="password" class="form-control formInput" placeholder="Enter Password" aria-describedby="Password">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xs 12">
+
+        <div class="addForm">
+
+            <label class="inputTitle">Confirm Password:</label>
+            <label id="cCPasswordAlert" class="alerts"><span style='float: right;'><i style='margin-right:5px;' class='glyphicon glyphicon-warning-sign'></i>Please enter your password</span></label>
+            <label id="wCPasswordAlert" class="alerts"><span style='float: right;'><i style='margin-right:5px;' class='glyphicon glyphicon-warning-sign'></i>Passwords do not match</span></label>
+            <div class="input-group input-group-lg" style="width: 100%;">
+                <input ng-model="$ctrl.inCPassword" type="password" class="form-control formInput" placeholder="Re-enter Password" aria-describedby="Confirm Password">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xs-12">
+
+        <div class="rememberMe">
+
+            <button id="signInButton" ng-click="$ctrl.createAccount()" class="btn btn-default hvr-bounce-to-top-signIn">Create Account</button>
+
+        </div>
+
+    </div>
+
+</div>
