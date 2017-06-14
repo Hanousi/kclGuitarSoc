@@ -75,6 +75,41 @@ exports.getUsers = function (groups, callback) {
 
 };
 
+exports.getCode = function (userId, callback) {
+    var connectionHandle;
+    async.waterfall([(done) => getConnection((err, connection) => {
+            connectionHandle = connection;
+            done(err, connection);
+        }),
+        (connection, done) => connection.query('SELECT AccessCode FROM Code WHERE ' +
+            'UserID = ?', [userId], (err, rows) => done(err, rows))], (err, rows) => {
+        if (connectionHandle) connectionHandle.release();
+        callback(err, rows);
+    });
+
+};
+
+exports.verifyAccount = function (userId, callback) {
+    var connectionHandle;
+    async.waterfall([(done) => getConnection((err, connection) => {
+            connectionHandle = connection;
+            done(err, connection);
+        }),
+        (connection, done) => connection.query('UPDATE User SET Verified = 1 WHERE ' +
+            'UserID = (?)', [userId], (err, rows) => done(err, rows))], (err, rows) => {
+        callback(err, rows);
+    });
+
+    async.waterfall([(done) => getConnection((err, connection) => {
+            connectionHandle = connection;
+            done(err, connection);
+        }),
+        (connection, done) => connection.query('DELETE FROM Code WHERE UserID = (?)', [userId], (err, rows) => done(err, rows))], (err, rows) => {
+        if (connectionHandle) connectionHandle.release();
+        callback(err, rows);
+    });
+};
+
 /**
  * Function for adding a user to the database. 
  * Checks if user already exists and hashes password if new user. 
@@ -376,7 +411,7 @@ exports.verification = function (host, userID, token, callback) {
         (done) => {
             var text = 'You are receiving this e-mail to verify the account you have created with the KCL Guitar Society.\n\n' +
                 'Please click on the following link, or paste this into your browser to complete verification:\n\n' +
-                'http://' + host + '/verify/'  + userID + '/' + token + '\n\n' +
+                'http://' + host + '/#!/verify/' + userID + '/' + token + '\n\n' +
                 'If you did not request this, please ignore this email.\n';
             var html = null;
             handleMail(text, html, userID, "Verify your account", done)

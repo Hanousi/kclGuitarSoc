@@ -768,6 +768,18 @@ module.exports = function (app, passport) {
         });
     });
 
+    app.post("/api/verifyAccount", bodyParser.json() , function (req, res) {
+        users.verifyAccount(req.body.userID, function (err, data) {
+            if (err) {
+                if (err.message == 'USER_EXISTS') res.sendStatus(409);
+                else {
+                    console.error(err);
+                    res.sendStatus(500);
+                }
+            }
+        });
+    });
+
     /**
      * @api {put} /api/users/:userID Update a user.
      * @apiDescription Can update one or more values. The old userID must be passed in the parameters.
@@ -960,6 +972,18 @@ module.exports = function (app, passport) {
 
     app.get("/api/lesson/:lessonId", function (req, res) {
         lessons.getLessonById(req.params.lessonId, function (err, data) {
+            if (err) {
+                if (err.message == 'NOT_FOUND') res.sendStatus(404);
+                else {
+                    console.error(err);
+                    res.sendStatus(500);
+                }
+            } else res.send(data);
+        });
+    });
+
+    app.get("/api/code/:userId", function (req, res) {
+        users.getCode(req.params.userId, function (err, data) {
             if (err) {
                 if (err.message == 'NOT_FOUND') res.sendStatus(404);
                 else {
