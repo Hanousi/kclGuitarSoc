@@ -33,9 +33,11 @@
             <div class="col-xs 12">
 
                 <div class="addForm">
+                    
+                    <div ng-if="$ctrl.emptyLessons" id="emptyLessons">You have no lessons booked at the moment.</div>
 
                     <div ng-repeat="lesson in $ctrl.finalLessons">
-
+                        
                         <div ng-if="lesson.StudentID == null" class="yourLessonInfo">
 
                             <div class="row">

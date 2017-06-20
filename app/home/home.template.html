@@ -17,6 +17,7 @@
                     <li><a ng-click="$ctrl.scrollTo('contactUsAnchor')" class="navbarOptions">Contact Us</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" id="#myNavbar">
+                    <li id="yourLessonsNav" ng-if="$ctrl.isAdmin"><a data-target="#" href="#!/upgradeAccount" class="navbarOptions">Upgrade Account</a></li>
                     <li id="yourLessonsNav" ng-if="$ctrl.loggedIn"><a data-target="#" href="#!/yourLessons" class="navbarOptions">Your Lessons</a></li>
                     <li id="signInNav" ng-if="!$ctrl.loggedIn"><a data-target="#" href="#!/signIn" class="navbarOptions">Sign In</a></li>
                     <li id="signInNav" ng-if="$ctrl.loggedIn"><a data-target="#" ng-click="$ctrl.logout()" class="navbarOptions">Sign Out</a></li>

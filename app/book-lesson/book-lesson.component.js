@@ -4,11 +4,12 @@ angular.
 module('bookLesson', []).
 component('bookLesson', {
     templateUrl: 'book-lesson/book-lesson.template.html',
-    controller: function BookLessonController($scope, $http, $uibModal) {
+    controller: function BookLessonController($scope, $http, $uibModal, $cookies) {
         var self = this;
 
         var myMap = new Map();
         this.finalMonth = [];
+        self.isTeacher = 0;
 
         var repopulate = function repopulate() {
             myMap.clear();
@@ -29,6 +30,17 @@ component('bookLesson', {
             }
         }
 
+        var getUser = function (done) {
+            var user = $cookies.get('selector_user');
+            if (user) return done(JSON.parse(user.substring(2, user.length)));
+        }
+        
+        getUser((user) => {
+            if(user.AccessGroup < 2) {
+                self.isTeacher = 1;
+            }
+        })
+
         var daysInAMonth = function daysInAMonth(month, year) {
             return 32 - new Date(year, month, 32).getDate();
         }
@@ -38,7 +50,7 @@ component('bookLesson', {
         var today = new Date()
 
         this.month = monthsInAYear[today.getMonth()];
-        
+
         this.year = today.getFullYear();
 
         $http.get('/api/lessons/' + self.month + '/' + self.year).then(function successCallback(response) {
@@ -50,7 +62,7 @@ component('bookLesson', {
 
             repopulate();
         });
-        
+
         this.daysInMonth = daysInAMonth(today.getMonth(), this.year);
 
         this.paddingMonth = new Date(this.year, today.getMonth(), 1).getDay();
@@ -61,9 +73,9 @@ component('bookLesson', {
         }
 
         this.nextMonth = function nextMonth(iMonth) {
-            
+
             self.finalMonth = [];
-            
+
             var numberMonth = monthsInAYear.indexOf(iMonth);
 
             var newYear = this.year;
@@ -92,9 +104,9 @@ component('bookLesson', {
         }
 
         this.prevMonth = function prevMonth(iMonth) {
-            
+
             self.finalMonth = [];
-            
+
             var numberMonth = monthsInAYear.indexOf(iMonth);
 
             var newYear = this.year;
@@ -134,14 +146,19 @@ component('bookLesson', {
                     me.close = function () {
                         $uibModalInstance.close();
                     };
-                    
+
+                    var getUser = function (done) {
+                        var user = $cookies.get('selector_user');
+                        if (user) return done(JSON.parse(user.substring(2, user.length)));
+                    }
+
                     me.data = data;
                     me.day = day.toString();
                     var lastNum = me.day.substr(me.day.length - 1);
-                    
-                    if(day > 3 && day < 21) {
+
+                    if (day > 3 && day < 21) {
                         me.day = me.day + "th";
-                    } else if(lastNum == 1) {
+                    } else if (lastNum == 1) {
                         me.day = me.day + "st";
                     } else if (lastNum == 2) {
                         me.day = me.day + "nd";
@@ -150,27 +167,33 @@ component('bookLesson', {
                     } else {
                         me.day = me.day + "th";
                     }
-                    
+
                     me.buyLesson = function buyLesson(lessonId) {
-                        window.location.href = '#!/book/' + lessonId;
-                        me.close();
+                        getUser((user) => {
+                            if (user.Verified) {
+                                window.location.href = '#!/book/' + lessonId;
+                                me.close();
+                            } else {
+                                alert("Your account must be verified before you can book lessons.")
+                            }
+                        })
                     }
-                    
+
                     me.month = month;
-                    
-                    me.lessonsInDay = me.data[day-1][1];
-                                                            
+
+                    me.lessonsInDay = me.data[day - 1][1];
+
                     me.availableLessons = function () {
                         var counter = 0;
-                        
-                        for(var i = 0; i < me.lessonsInDay.length; ++i) {
 
-                            if(me.lessonsInDay[i].Available == 0) {
+                        for (var i = 0; i < me.lessonsInDay.length; ++i) {
+
+                            if (me.lessonsInDay[i].Available == 0) {
                                 counter++;
                             }
                         }
-                                                
-                        if(counter == me.lessonsInDay.length) {
+
+                        if (counter == me.lessonsInDay.length) {
                             return true;
                         } else {
                             return false;
@@ -182,7 +205,7 @@ component('bookLesson', {
                     data: function () {
                         return self.finalMonth;
                     },
-                    
+
                     month: function () {
                         return self.month;
                     }

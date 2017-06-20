@@ -17,34 +17,12 @@ component('createAccount', {
             return text;
         }
 
-        var student = true;
         var passed;
-
-        self.teacherOption = function () {
-            document.getElementById("teacherBtn").classList.add("active");
-            document.getElementById("studentBtn").classList.remove("active");
-            student = false;
-            $("#accessCode").show(500);
-        }
-
-        self.studentOption = function () {
-            document.getElementById("studentBtn").classList.add("active");
-            document.getElementById("teacherBtn").classList.remove("active");
-            student = true;
-            $("#accessCode").hide(500);
-        }
 
         self.createAccount = function () {
             passed = 0;
 
             var pattern = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
-
-            if (self.inACode == undefined && student == false || self.inACode != "0000" && student == false) {
-                $("#aCAlert").show();
-            } else {
-                $("#aCAlert").hide();
-                passed++;
-            }
 
             if (self.inFName == undefined) {
                 $("#fNAlert").show();
@@ -88,12 +66,7 @@ component('createAccount', {
                 }
             }
 
-            console.log(self.inUserId);
-            console.log(self.inPassword);
-            console.log(self.inFName);
-            console.log(self.inLName);
-
-            if (passed == 7) {
+            if (passed == 6) {
                 $http.post("/signup", {
                     'userID': self.inUserId,
                     'password': self.inPassword,

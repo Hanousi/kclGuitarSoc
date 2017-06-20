@@ -14,5 +14,7 @@ angular.module('KCLGS', [
  'ui.bootstrap',
  'forgotPassword',
  'createAccount',
- 'verify'
+ 'verify',
+ 'resetPassword',
+ 'upgradeAccount'
 ]);

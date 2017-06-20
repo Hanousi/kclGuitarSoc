@@ -12,6 +12,7 @@ component('verify', {
                 $http.post("/api/verifyAccount", {
                     "userID": $routeParams.inUserID
                 })
+                $timeout($http.get("/logout"));
             }
         })
     }

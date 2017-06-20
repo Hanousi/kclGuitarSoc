@@ -54,6 +54,14 @@ a.anchor {
 /*Create an Account
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
+#successfulRequest {
+    display: none;
+    text-align: center;
+    font-weight: 300;
+    font-size: 22px;
+    color: white;
+}
+
 #aCAlert {
     display: none;
 }
@@ -325,6 +333,27 @@ a.anchor {
 
 /*PurchaseLesson
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#successfulUpgrade {
+    display: none;
+    font-weight: 300;
+    font-size: 22px;
+    text-align: center;
+    color: greenyellow;
+}
+
+#unsuccessfulUpgrade {
+    display: none;
+    font-weight: 300;
+    font-size: 22px;
+    text-align: center;
+    color: orangered;
+}
+
+#emptyLessons {
+    font-size: 22px;
+    text-align: center;
+}
 
 .lessonInfo {
     border: 2px solid white;

@@ -298,13 +298,13 @@ exports.requestReset = function (host, userID, callback) {
         (connection, done) => crypto.randomBytes(20, (err, buf) => done(err, buf.toString('hex'), connection)),
         (token, connection, done) => saveToken(connection, userID, token, (Date.now() + 3600000) / 1000, done),
         (token, done) => {
-            var text = 'You are receiving this because you (or someone else) has requested the reset of the password for your' +
+            var text = 'You are receiving this because you (or someone else) has requested the reset of the password for your ' +
                 'account.\n\n' +
                 'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-                'http://' + host + '/#!/reset-password/' + token + '\n\n' +
+                'http://' + host + '/#!/resetPassword/' + token + '\n\n' +
                 'If you did not request this, please ignore this email and your password will remain unchanged.\n';
             var html = null;
-            handleMail(text, html, userID, done)
+            handleMail(text, html, userID, "Password reset", done)
         }], (err, rows) => {
         if (connectionHandle) connectionHandle.release();
         callback(err, rows);

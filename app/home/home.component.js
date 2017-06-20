@@ -6,6 +6,7 @@ component('home', {
         var self = this;
 
         self.loggedIn = false;
+        self.isAdmin = 0;
 
         var cookie = $cookies.get("selector_user");
         if (cookie != undefined) {
@@ -15,8 +16,19 @@ component('home', {
             }
         }
 
-        self.logout = function() {
-            $http.get("/logout");
+        var getUser = function (done) {
+            var user = $cookies.get('selector_user');
+            if (user) return done(JSON.parse(user.substring(2, user.length)));
+        }
+
+        getUser((user) => {
+            if (user.AccessGroup == 0) {
+                self.isAdmin = 1;
+            }
+        })
+
+        self.logout = function () {
+            $timeout($http.get("/logout"));
             $timeout(location.reload());
         }
 
@@ -26,16 +38,16 @@ component('home', {
             $anchorScroll();
             $location.hash(old);
         }
-        
-        self.enterPortal = function() {
-            if(self.loggedIn) {
+
+        self.enterPortal = function () {
+            if (self.loggedIn) {
                 location.href = '#!/book';
             } else {
                 alert("You can only enter the portal once you have signed in.")
             }
         }
-        
-        self.sendTo = function(dest) {
+
+        self.sendTo = function (dest) {
             location.href(dest);
         }
     }

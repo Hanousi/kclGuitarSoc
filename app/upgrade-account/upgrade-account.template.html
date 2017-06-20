@@ -1,0 +1,77 @@
+<div class="row">
+
+    <div class="col-xs-12">
+
+        <a href="#!/home">
+            <p class="addTitle">KCL Guitar Society</p>
+        </a>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xs 12">
+
+        <div class="formTitle">
+
+            Upgrade Account
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xs 12">
+
+        <div class="addForm">
+
+            <label class="inputTitle">User ID:</label>
+            <label id="uAUserAlert"></label>
+            <div class="input-group input-group-lg" style="width: 100%;">
+                <input ng-model="$ctrl.inUserId" type="email" id="userId" class="form-control" placeholder="KNumber@kcl.ac.uk" aria-describedby="User ID">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xs-12">
+
+        <div class="rememberMe">
+
+            <button id="signInButton" ng-click="$ctrl.upgradeAccount()" class="btn btn-default hvr-bounce-to-top-signIn">Upgrade Account</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xs-12">
+
+        <div id="successfulUpgrade">
+
+            {{$ctrl.inUserId}}'s account has been succesfully upgraded!
+
+        </div>
+        
+        <div id="unsuccessfulUpgrade">
+
+            {{$ctrl.inUserId}}'s account could not be upgraded!
+
+        </div>
+
+    </div>
+
+</div>
