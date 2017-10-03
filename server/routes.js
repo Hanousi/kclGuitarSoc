@@ -166,7 +166,7 @@ module.exports = function (app, passport) {
      * @api {get} /api/modules Select modules depending on filters given.
      * @apiDescription If filters are not specified selects all modules available.
      * The filters should be specified in the query.
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      *	/api/modules?credits=15&module_name=Accounting&year=2&per_page=10
      * @apiName GetModules
      * @apiGroup Modules
@@ -184,7 +184,7 @@ module.exports = function (app, passport) {
      *
      * @apiSuccessExample Success-Response:
      *  HTTP/1.1 200 OK, Name: Accounting, LectureDay : Monday, Credits: 15...
-     * 
+     *
      *
      */
     app.get("/api/modules", validator(validationConf.FILTER_VALIDATOR_OPTIONS), validateSchemas([validationConf.FILTER_SCHEMA]), function (req, res) {
@@ -220,17 +220,17 @@ module.exports = function (app, passport) {
     /**
      * @api {get} /api/modules/tags Get the tags assigned to the given module(s) .
      * @apiDescription The moduleID(s) should be specified in the query.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/api/modules/tags?module=5CCS2SEG&module=6CCS2JUL
      * @apiName GetModulesTags
      * @apiGroup Tags
      *
-     * @apiParam {string} module The moduleID(s) of the module(s) wanted. 
+     * @apiParam {string} module The moduleID(s) of the module(s) wanted.
      *
      * @apiSuccessExample Success-Response:
      *  HTTP/1.1 200 OK, TagName : BSc , Category : Degree...
-     * 
+     *
      *
      */
     app.get("/api/modules/tags", function (req, res) {
@@ -245,15 +245,15 @@ module.exports = function (app, passport) {
     /**
      * @api {get} /api/modules/faculties Get the distinct faculties that the given module(s) are assigned to.
      * @apiDescription The moduleID(s) should be specified in the query.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/api/modules/faculties
      * @apiName GetModuleFaculties
      * @apiGroup Modules
      *
      * @apiSuccessExample Success-Response:
      *  HTTP/1.1 200 OK, Faculty : Informatics, Faculty : Geography...
-     * 
+     *
      *
      */
     app.get("/api/modules/faculties", function (req, res) {
@@ -268,8 +268,8 @@ module.exports = function (app, passport) {
     /**
      * @api {get} /api/modules/:moduleID Get all available information on a module.
      * @apiDescription The moduleID should be specified in the parameters.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/api/modules/5CCS2SEG
      * @apiName GetModule
      * @apiGroup Modules
@@ -278,7 +278,7 @@ module.exports = function (app, passport) {
      *
      * @apiSuccessExample Success-Response:
      *  HTTP/1.1 200 OK, ModuleID : 5CCS2SEG, ModuleName: Software Engineering, Faculty: Informatics...
-     * 
+     *
      * @apiError NOT_FOUND The module specified was not found.
      * @apiErrorExample :
      * HTTP/1.1 404 Not Found
@@ -300,9 +300,9 @@ module.exports = function (app, passport) {
      * @api {put} /api/modules/:moduleID Update information on a module.
      * @apiDescription The moduleID should be specified in the parameters. Can change one or more elements.
      * The new moduleID, moduleName, description, year, credits, lecture day, lecture time, coursework percentage and faculty should be specified in the body of the request.
-     * @apiExample Example usage : 
-     *	/api/modules/5CCS2SEG 
-     * { moduleName : "Software Engineering", 
+     * @apiExample Example usage :
+     *	/api/modules/5CCS2SEG
+     * { moduleName : "Software Engineering",
      *   lectureDay : "Monday", ...} in json format.
      * @apiName UpdateModule
      * @apiGroup Modules
@@ -319,8 +319,8 @@ module.exports = function (app, passport) {
      * @apiParam {string} faculty Faculty of the module ex: Informatics.
      *
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 204 
-     * 
+     *  HTTP/1.1 204
+     *
      * @apiError NOT_FOUND The module specified was not found.
      * @apiErrorExample :
      * HTTP/1.1 404 Not Found
@@ -345,11 +345,11 @@ module.exports = function (app, passport) {
     /**
      * @api {post} /api/modules Add a new module by bulk upload or one by one.
      * @apiDescription The header x-insert-type must be specified to be BULK for bulk uploading, otherwise will by default use the one by one add method. If process environment variable infile is set to true
-     * data insertion will attempt to use the load data infile local command over inserts. Will fail if disabled on mysql server. 
+     * data insertion will attempt to use the load data infile local command over inserts. Will fail if disabled on mysql server.
      * The moduleID, moduleName, description, year, credits, lecture day, lecture time, coursework percentage and faculty should be specified in the body of the request if not bulk uploading.
-     * @apiExample Example usage : 
-     *	/api/modules 
-     * { moduleName : "Software Engineering", 
+     * @apiExample Example usage :
+     *	/api/modules
+     * { moduleName : "Software Engineering",
      *   lectureDay : "Monday", ...} in json format.
      * @apiName AddModule
      * @apiGroup Modules
@@ -367,7 +367,7 @@ module.exports = function (app, passport) {
      *
      * @apiSuccessExample Success-Response:
      *  HTTP/1.1 201 Created
-     * 
+     *
      * @apiError ERR_DUP_ENTRY The module already exists.
      * @apiErrorExample :
      * HTTP/1.1 409 Duplicate Entry
@@ -409,17 +409,17 @@ module.exports = function (app, passport) {
     /**
      * @api {delete} /api/modules/:moduleID Delete a module.
      * @apiDescription The moduleID should be specified in the parameters. Can change one or more elements.
-     * 
-     * @apiExample Example usage : 
-     *	/api/modules/5CCS2SEG 
+     *
+     * @apiExample Example usage :
+     *	/api/modules/5CCS2SEG
      * @apiName DeleteModule
      * @apiGroup Modules
      *
      * @apiParam {string} moduleID ID of the module to delete.
      *
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 204 
-     * 
+     *  HTTP/1.1 204
+     *
      * @apiError NOT_FOUND The module specified was not found.
      * @apiErrorExample :
      * HTTP/1.1 404 Not Found
@@ -445,7 +445,7 @@ module.exports = function (app, passport) {
      * @api {get} /api/users/:userID/modules/ Select tracked modules depending on filters given.
      * @apiDescription If filters are not specified selects all modules available.
      * The filters should be specified in the query.
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      *	/api/users/studentemail@kcl.ac.uk/modules?credits=15&module_name=Accounting&year=2&per_page=10
      * @apiName FilterTrackedModules
      * @apiGroup Modules
@@ -463,7 +463,7 @@ module.exports = function (app, passport) {
      *
      * @apiSuccessExample Success-Response:
      *  HTTP/1.1 200 OK, Name: Accounting, LectureDay : Monday, Credits: 15...
-     * 
+     *
      *
      */
     app.get("/api/users/:userID/modules/", validator(validationConf.FILTER_VALIDATOR_OPTIONS), validateSchemas([validationConf.FILTER_SCHEMA]), function (req, res) {
@@ -500,8 +500,8 @@ module.exports = function (app, passport) {
     /**
      * @api {post} /api/users/modules Tracks a module.
      * @apiDescription The moduleID, userID and tagArray should be specified in the body of the request in json form. TagArray is optional.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/api/users/modules
      * { tagArray : ["BSc","Careers"],  moduleID : "5CCS2OSC", userID : "studentemail@kcl.ac.uk"}
      * @apiName AddTrackedModule
@@ -517,7 +517,7 @@ module.exports = function (app, passport) {
      * @apiError NOT_FOUND The module specified was not found.
      * @apiErrorExample :
      * HTTP/1.1 404 Not Found
-     * 
+     *
      * @apiError ERR_DUP_ENTRY The module is already tracked.
      * @apiErrorExample :
      * HTTP/1.1 409 Duplicate Entry
@@ -552,8 +552,8 @@ module.exports = function (app, passport) {
     /**
      * @api {delete} /api/users/:userID/modules/:moduleID Delete a tracked module.
      * @apiDescription The moduleID and userID should be specified in the parameters.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/api/users/studentemail@kcl.ac.uk/modules/5CCS2OSC
      * @apiName DeleteTrackedModule
      * @apiGroup Modules
@@ -562,8 +562,8 @@ module.exports = function (app, passport) {
      * @apiParam {string} userID User's email.
      *
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 204 
-     * 
+     *  HTTP/1.1 204
+     *
      * @apiError NOT_FOUND The module specified was not found.
      * @apiErrorExample :
      * HTTP/1.1 404 Not Found
@@ -587,8 +587,8 @@ module.exports = function (app, passport) {
     /**
      * @api {get} /api/users/:userID/modules/recommended Get recommended modules.
      * @apiDescription The tag(s) and number of wanted recommendations should be specified in the query, and the userID in the parameters.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/api/users/studentemail@kcl.ac.uk/modules/recommended?tag=BSc&tag=Careers&wanted=2
      * @apiName GetRecommendations
      * @apiGroup Modules
@@ -616,8 +616,8 @@ module.exports = function (app, passport) {
     /**
      * @api {post} /api/users/feedback  Add feedback.
      * @apiDescription Add feedback. Each rating is between 1 and 5, where 5 is the best. All data should be sent in the body.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/api/users/feedback
      * { "usefulness" : 4, "usability" : 5... }
      * @apiName AddFeedback
@@ -649,8 +649,8 @@ module.exports = function (app, passport) {
 
     /**
      * @api {get} /api/users/feedback Retrieve feedback.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/api/users/feedback
      *
      * @apiName GetFeedback
@@ -672,8 +672,8 @@ module.exports = function (app, passport) {
     /**
      * @api {delete} /api/users/feedback Delete feedback.
      * @apiDescription Delete all feedback up to a given date. If no date is given deletes all feedback.The date should be in the query.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/api/users/feedback.before_date=2017-03-05
      *
      * @apiName DeleteFeedback
@@ -682,7 +682,7 @@ module.exports = function (app, passport) {
      * @apiParam {string} before_date - Date in the form yyyy-mm-dd.
      *
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 204 
+     *  HTTP/1.1 204
      *
      * @apiError NOT_FOUND The date specified was not found.
      * @apiErrorExample :
@@ -707,8 +707,8 @@ module.exports = function (app, passport) {
     /**
      * @api {get} /api/users Get the users by access group.
      * @apiDescription Can specify multiple access groups, one access group or nothing. If nothing is specified retrieves all users. Only administrators can use this.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/api/users?access_group=0&access_group=2
      *
      * @apiName GetUsers
@@ -733,8 +733,8 @@ module.exports = function (app, passport) {
 
     /**
      * @api {post} /api/users Add users.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/api/users
      * { userID : "david.smith@gmail.com", fName : "David", lName : "Smith", password : "password"} in json form.
      *
@@ -743,7 +743,7 @@ module.exports = function (app, passport) {
      *
      * @apiParam {string} userID - The user's email.
      * @apiParam {string} fName - The user's first name.
-     * @apiParam {string} lName - The user's last name. 
+     * @apiParam {string} lName - The user's last name.
      * @apiParam {string} password - The user's password.
      *
      * @apiSuccessExample Success-Response:
@@ -783,7 +783,7 @@ module.exports = function (app, passport) {
     /**
      * @api {put} /api/users/:userID Update a user.
      * @apiDescription Can update one or more values. The old userID must be passed in the parameters.
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      *	/api/users/studentemail@kcl.ac.uk
      * { userID : "david.smith@gmail.com", fName : "David", lName : "Smith", password : "password"} in json form.
      *
@@ -792,7 +792,7 @@ module.exports = function (app, passport) {
      *
      * @apiParam {string} userID - The user's new email or old email.
      * @apiParam {string} fName - The user's first name.
-     * @apiParam {string} lName - The user's last name. 
+     * @apiParam {string} lName - The user's last name.
      * @apiParam {string} password - The user's password.
      *
      * @apiSuccessExample Success-Response:
@@ -819,7 +819,7 @@ module.exports = function (app, passport) {
 
     /**
      * @api {delete} /api/users/:userID Delete a user.
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      *	/api/users/studentemail@kcl.ac.uk
      *
      * @apiName DeleteUsers
@@ -865,9 +865,9 @@ module.exports = function (app, passport) {
     // Tags	//// ******************************************************************************************************************************************************
 
     /**
-     * @api {get} /api/tags/categories Get the distinct categories of tags.                                                
-     * 
-     * @apiExample Example usage : 
+     * @api {get} /api/tags/categories Get the distinct categories of tags.
+     *
+     * @apiExample Example usage :
      *	/api/tags/categories
      *
      * @apiName GetTagCategories
@@ -887,9 +887,9 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {get} /api/tags/ Get all the tags.                                                
-     * 
-     * @apiExample Example usage : 
+     * @api {get} /api/tags/ Get all the tags.
+     *
+     * @apiExample Example usage :
      *	/api/tags
      *
      * @apiName GetTags
@@ -1006,7 +1006,7 @@ module.exports = function (app, passport) {
         });
     });
 
-    app.put("/api/lesson", bodyParser.json(), authLevel(1), function (req, res) {
+    app.put("/api/lesson", bodyParser.json(), authLevel(2), function (req, res) {
         console.log(req.body.StudentID);
         console.log(req.body.StudentName);
         console.log(req.body.LessonID);
@@ -1023,19 +1023,19 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {post} /api/tags Add tags one by one or by bulk upload.                                                
-     * @apiDescription If the header x-insert-type is set to BULK, the tags will be uploaded in bulk with the chosen csv file. Otherwise, the tagName and category 
+     * @api {post} /api/tags Add tags one by one or by bulk upload.
+     * @apiDescription If the header x-insert-type is set to BULK, the tags will be uploaded in bulk with the chosen csv file. Otherwise, the tagName and category
      * have to be specified in the body in json form. If process environment variable infile is set to true
-     * data insertion will attempt to use the load data infile local command over inserts. Will fail if disabled on mysql server. 
-     * @apiExample Example usage : 
+     * data insertion will attempt to use the load data infile local command over inserts. Will fail if disabled on mysql server.
+     * @apiExample Example usage :
      *	/api/tags
      * {tagName : "BSc" , category : "Degree"}
      *
      * @apiName AddTags
      * @apiGroup Tags
      *
-     * @apiParam {string} tagName The name of the tag. 
-     * @apiParam {string} category The category of the tag. 
+     * @apiParam {string} tagName The name of the tag.
+     * @apiParam {string} category The category of the tag.
      *
      * @apiSuccessExample Success-Response:
      *  HTTP/1.1 201 Created
@@ -1076,22 +1076,22 @@ module.exports = function (app, passport) {
         });
 
     /**
-     * @api {put} /api/tags/:tagName Update a tag.                                                
-     * @apiDescription If the header x-insert-type is set to BULK, the tags will be uploaded in bulk with the chosen csv file. Otherwise, the new tagName and category 
+     * @api {put} /api/tags/:tagName Update a tag.
+     * @apiDescription If the header x-insert-type is set to BULK, the tags will be uploaded in bulk with the chosen csv file. Otherwise, the new tagName and category
      * have to be specified in the body in json form and the old tagName as a parameter of the route. If process environment variable infile is set to true
-     * data insertion will attempt to use the load data infile local command over inserts. Will fail if disabled on mysql server. 
-     * @apiExample Example usage : 
+     * data insertion will attempt to use the load data infile local command over inserts. Will fail if disabled on mysql server.
+     * @apiExample Example usage :
      *	/api/tags/BSc
      * {tagName : "MSci" , category : "Degree"}
      *
      * @apiName UpdateTags
      * @apiGroup Tags
      *
-     * @apiParam {string} tagName The name of the tag. 
-     * @apiParam {string} category The category of the tag. 
+     * @apiParam {string} tagName The name of the tag.
+     * @apiParam {string} category The category of the tag.
      *
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 204 
+     *  HTTP/1.1 204
      *
      * @apiError NOT_FOUND The tag doesn't exist.
      * @apiErrorExample :
@@ -1110,20 +1110,20 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {delete} /api/tags/:tagName Delete a tag.                                                
-     * @apiDescription Specify the tagName of the tag to be deleted as a parameter. 
-     * 
-     * @apiExample Example usage : 
+     * @api {delete} /api/tags/:tagName Delete a tag.
+     * @apiDescription Specify the tagName of the tag to be deleted as a parameter.
+     *
+     * @apiExample Example usage :
      *	/api/tags/BSc
      *
      * @apiName DeleteTags
      * @apiGroup Tags
      *
-     * @apiParam {string} tagName The name of the tag. 
-     * @apiParam {string} category The category of the tag. 
+     * @apiParam {string} tagName The name of the tag.
+     * @apiParam {string} category The category of the tag.
      *
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 204 
+     *  HTTP/1.1 204
      *
      * @apiError NOT_FOUND The tag doesn't exist.
      * @apiErrorExample :
@@ -1142,16 +1142,16 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {get} /api/modules/:moduleID/tags Retrieve the tags associated to a given module.                                                
-     * @apiDescription Specify the moduleID of the module wanted as a parameter. 
-     * 
-     * @apiExample Example usage : 
+     * @api {get} /api/modules/:moduleID/tags Retrieve the tags associated to a given module.
+     * @apiDescription Specify the moduleID of the module wanted as a parameter.
+     *
+     * @apiExample Example usage :
      *	 /api/modules/5CCS2SEG/tags
      *
      * @apiName GetModuleTags
      * @apiGroup Tags
      *
-     * @apiParam {string} moduleID The ID of the module. 
+     * @apiParam {string} moduleID The ID of the module.
      *
      * @apiSuccessExample Success-Response:
      *  HTTP/1.1 200 OK
@@ -1167,11 +1167,11 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {post} /api/modules/tags Assign tags to modules in bulk.                                                
+     * @api {post} /api/modules/tags Assign tags to modules in bulk.
      * @apiDescription Will upload assignments from a csv file. If process environment variable infile is set to true
      * data insertion will attempt to use the load data infile local command over inserts. Will fail if disabled on mysql server. Have to add a mutlipart form data containing file field named batch.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	 /api/modules/tags
      *
      * @apiName AddTagAssignments
@@ -1197,11 +1197,11 @@ module.exports = function (app, passport) {
 
 
     /**
-     * @api {post} /api/modules/:moduleID/tags Assign tags to modules one by one.                                                
+     * @api {post} /api/modules/:moduleID/tags Assign tags to modules one by one.
      * @apiDescription Will upload assignments from a csv file if the file is specified and will use insertion or infile. If process environment variable infile is set to true
      * data insertion will attempt to use the load data infile local command over inserts. Will fail if disabled on mysql server. Have to add a mutlipart form data containing file field named batch.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/api/modules/5CCS2SEG/tags
      *
      * @apiName AddTagAssignments
@@ -1234,10 +1234,10 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {delete} /api/modules/:moduleID/tags/:tagName Delete tag-module assignment.                                                
+     * @api {delete} /api/modules/:moduleID/tags/:tagName Delete tag-module assignment.
      * @apiDescription Have to specify the tagName and moduleID as parameters in the route.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/api/modules/5CCS2SEG/tags/BSc
      *
      * @apiName DeleteTagAssignments
@@ -1266,10 +1266,10 @@ module.exports = function (app, passport) {
     // Degree routes ////   ******************************************************************************************************************************************************
 
     /**
-     * @api {get} /api/users/:userID/degrees Match a user's preferences to degrees.                                                
+     * @api {get} /api/users/:userID/degrees Match a user's preferences to degrees.
      * @apiDescription Have to specify the userID as parameters in the route.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/api/users/studentemail@kcl.ac.uk/degrees
      *
      * @apiName MatchDegrees
@@ -1291,10 +1291,10 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {get} /api/degrees/:degreeTitle Get information on a specific degree.                                                
+     * @api {get} /api/degrees/:degreeTitle Get information on a specific degree.
      * @apiDescription Have to specify the degreeTitle as parameters in the route.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/api/degrees/BSc Computer Science
      *
      * @apiName GetDegree
@@ -1316,9 +1316,9 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {get} /api/degrees Get information on all degrees.                                                
-     * 
-     * @apiExample Example usage : 
+     * @api {get} /api/degrees Get information on all degrees.
+     *
+     * @apiExample Example usage :
      *	/api/degrees
      *
      * @apiName GetDegrees
@@ -1340,12 +1340,12 @@ module.exports = function (app, passport) {
 
 
     /**
-     * @api {post} /api/degrees Add degrees in bulk or one by one.     
-     * @apiDescription Upload degree dependencies in bulk from a csv file or one bye one. If process environment variable infile is set to true data insertion will attempt to use the load data infile local command over inserts. 
-     * Will fail if disabled on mysql server. Will upload in bulk only if the header x-insert-type is set to BULK. Have to add a mutlipart form data containing file field named batch. Otherwise will require degreeTitle and lengthOfStudy 
-     * to be specified in the body in json form. 
+     * @api {post} /api/degrees Add degrees in bulk or one by one.
+     * @apiDescription Upload degree dependencies in bulk from a csv file or one bye one. If process environment variable infile is set to true data insertion will attempt to use the load data infile local command over inserts.
+     * Will fail if disabled on mysql server. Will upload in bulk only if the header x-insert-type is set to BULK. Have to add a mutlipart form data containing file field named batch. Otherwise will require degreeTitle and lengthOfStudy
+     * to be specified in the body in json form.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      *	/api/degrees
      * { degreeTitle : "BSc Computer Science", lengthOfStudy : 3}
      *
@@ -1394,10 +1394,10 @@ module.exports = function (app, passport) {
         });
 
     /**
-     * @api {put} /api/degrees/:degreeTitle Update a degree.     
+     * @api {put} /api/degrees/:degreeTitle Update a degree.
      * @apiDescription Can change one or more elements. Have to specify the old degreeTitle as a parameter, and the new/ old degreeTile and new lengthOfStudy in the body in json form.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      *	/api/degrees/BSc Computer Science
      *
      * @apiName UpdateDegree
@@ -1407,7 +1407,7 @@ module.exports = function (app, passport) {
      *
      *
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 204 
+     *  HTTP/1.1 204
      * @apiError NOT_FOUND The degree doesn't exist.
      * @apiErrorExample :
      * HTTP/1.1 404 Not Found
@@ -1426,10 +1426,10 @@ module.exports = function (app, passport) {
         });
 
     /**
-     * @api {delete} /api/degrees/:degreeTitle Delete a degree.     
+     * @api {delete} /api/degrees/:degreeTitle Delete a degree.
      * @apiDescription Can change one or more elements. Have to specify the old degreeTitle as a parameter, and the new/ old degreeTile and new lengthOfStudy in the body in json form.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/degrees/BSc Computer Science
      *
      * @apiName DeleteDegree
@@ -1438,7 +1438,7 @@ module.exports = function (app, passport) {
      *
      *
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 204 
+     *  HTTP/1.1 204
      * @apiError NOT_FOUND The degree doesn't exist.
      * @apiErrorExample :
      * HTTP/1.1 404 Not Found
@@ -1458,10 +1458,10 @@ module.exports = function (app, passport) {
     // Degree Assignments
 
     /**
-     * @api {get} /api/degrees/:degreeTitle/modules/ Get the module assignments of a degree.     
+     * @api {get} /api/degrees/:degreeTitle/modules/ Get the module assignments of a degree.
      * @apiDescription Have to specify the degreeTitle as a parameter.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/degrees/BSc Computer Science/modules/
      *
      * @apiName GetModuleDegreeAssignments
@@ -1470,7 +1470,7 @@ module.exports = function (app, passport) {
      *
      *
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 200 OK 
+     *  HTTP/1.1 200 OK
      */
     app.get("/api/degrees/:degreeTitle/modules/", function (req, res) {
         degrees.getAssignments(req.params.degreeTitle, function (err, data) {
@@ -1482,11 +1482,11 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {post} /api/degrees/:degreeTitle/modules/ Add module assignments of a degree.     
+     * @api {post} /api/degrees/:degreeTitle/modules/ Add module assignments of a degree.
      * @apiDescription Have to specify the degreeTitle as a parameter, and the moduleID, dependentIDArray and recommndedArray in the body in json form.
      * The dependentIDArray and recommendedIDArray can consist of one or more moduleIDs.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/degrees/BSc Computer Science/modules/
      * {moduleID : "4CCS1DST", isOptional : "0", dependentIDArray : ["4CCS1PEP","4CCS1PRA"], recommendedIDArray : ["4CCS1FC1","6CCS1MAL"]}
      *
@@ -1500,7 +1500,7 @@ module.exports = function (app, passport) {
      *
      *
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 201 Created 
+     *  HTTP/1.1 201 Created
      * @apiError ER_DUP_ENTRY The degree-module assignment already exists.
      * @apiErrorExample :
      * HTTP/1.1 409 Duplicate Entry
@@ -1523,18 +1523,18 @@ module.exports = function (app, passport) {
         });
 
     /**
-     * @api {post} /api/degrees/modules Add module assignments of a degree in bulk.     
-     * @apiDescription Upload degree dependencies in bulk from a csv file. If process environment variable infile is set to true data insertion will attempt to use the load data infile local command over inserts. 
+     * @api {post} /api/degrees/modules Add module assignments of a degree in bulk.
+     * @apiDescription Upload degree dependencies in bulk from a csv file. If process environment variable infile is set to true data insertion will attempt to use the load data infile local command over inserts.
      * Will fail if disabled on mysql server. Have to add a mutlipart form data containing file field named batch.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/degrees/modules/
      *
      * @apiName AddModuleDegreeAssignmentsBulk
      * @apiGroup Degrees
      *
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 201 Created 
+     *  HTTP/1.1 201 Created
      */
     app.post("/api/degrees/modules", authLevel(1), upload.single('batch'), function (req, res) {
         if (!req.file) res.status(400).send('File not transfered');
@@ -1551,10 +1551,10 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {put} /api/degrees/:degreeTitle/modules/:moduleID Update module-degree assignments.     
+     * @api {put} /api/degrees/:degreeTitle/modules/:moduleID Update module-degree assignments.
      * @apiDescription Have to specify the degreeTitle and moduleID in the parameters of the route. isOptional has to be in the body in json form.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/degrees/BSc Computer Science/modules/5CCS2SEG
      * { isOptional : "1"}
      *
@@ -1566,7 +1566,7 @@ module.exports = function (app, passport) {
      * @apiParam {boolean} isOptional Whether the module is optional or not.
      *
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 204  
+     *  HTTP/1.1 204
      * @apiError NOT_FOUND The degree-module assignment does not exist.
      * @apiErrorExample :
      * HTTP/1.1 404 Not Found
@@ -1586,10 +1586,10 @@ module.exports = function (app, passport) {
         });
 
     /**
-     * @api {delete} /api/degrees/:degreeTitle/modules/:moduleID Delete module-degree assignments.     
+     * @api {delete} /api/degrees/:degreeTitle/modules/:moduleID Delete module-degree assignments.
      * @apiDescription Have to specify the degreeTitle and moduleID in the parameters.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/degrees/Computer Science with Management/modules/5CCS2SEG
      *
      * @apiName DeleteModuleDegreeAssignments
@@ -1597,7 +1597,7 @@ module.exports = function (app, passport) {
      * @apiParam {string} degreeTitle The name of the degree.
      * @apiParam {string} moduleID The module code.
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 204 
+     *  HTTP/1.1 204
      * @apiError NOT_FOUND The degree-module assignment does not exist.
      * @apiErrorExample :
      * HTTP/1.1 404 Not Found
@@ -1614,13 +1614,13 @@ module.exports = function (app, passport) {
         });
     });
 
-    // Degree dependencies 																								
+    // Degree dependencies
 
     /**
-     * @api {get} /api/degrees/:degreeTitle/modules/dependencies Get a degree's dependencies .     
+     * @api {get} /api/degrees/:degreeTitle/modules/dependencies Get a degree's dependencies .
      * @apiDescription Have to specify the degreeTitle in the parameters.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/degrees/BSc Computer Science/modules/dependencies
      *
      * @apiName GetDegreeDependencies
@@ -1640,10 +1640,10 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {post} /api/degrees/:degreeTitle/modules/dependencies Add a degree's dependencies.     
+     * @api {post} /api/degrees/:degreeTitle/modules/dependencies Add a degree's dependencies.
      * @apiDescription Have to specify the degreeTitle in the parameters and the moduleID and dependentID in the body in json form.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/degrees/BSc Computer Science/modules/dependencies
      * {moduleID : "6CCS1MAL", dependentID : "5CCS2SEG"}
      *
@@ -1673,12 +1673,12 @@ module.exports = function (app, passport) {
         });
 
     /**
-     * @api {post} /api/degrees/modules/dependencies Add degree dependencies in bulk.     
-     * @apiDescription Upload degree dependencies in bulk from a csv file. If process environment variable infile is set to true data insertion will attempt 
-     * to use the load data infile local command over inserts. 
+     * @api {post} /api/degrees/modules/dependencies Add degree dependencies in bulk.
+     * @apiDescription Upload degree dependencies in bulk from a csv file. If process environment variable infile is set to true data insertion will attempt
+     * to use the load data infile local command over inserts.
      * Will fail if disabled on mysql server. Have to add a mutlipart form data containing file field named batch.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/degrees/modules/dependencies
      *
      * @apiName AddDegreeDependenciesBulk
@@ -1702,10 +1702,10 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {put} /api/degrees/:degreeTitle/modules/dependencies Update a degree's dependencies.     
+     * @api {put} /api/degrees/:degreeTitle/modules/dependencies Update a degree's dependencies.
      * @apiDescription Have to specify the degreeTitle and the moduleID in the parameters and dependentIDArray in the body in json form. Can specify one or more dependencies.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/degrees/BSc Computer Science/modules/dependencies
      * {moduleID : "6CCS1MAL", dependentIDArray : ["5CCS2SEG", "4CCS1IAI"]}
      *
@@ -1716,7 +1716,7 @@ module.exports = function (app, passport) {
      * @apiParam {string} moduleID The module code.
      * @apiParam {string} dependentIDArray The modulesIDs of the modules dependent on the module above.
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 204 
+     *  HTTP/1.1 204
      */
     app.put("/api/degrees/:degreeTitle/modules/:moduleID/dependencies", bodyParser.json(), authLevel(1), validator(validationConf.ASSIGNMENT_OPTIONS),
         validateSchemas([validationConf.DEPENDECY_UPDATE_SCHEMA]),
@@ -1732,10 +1732,10 @@ module.exports = function (app, passport) {
     // Degree Recommended
 
     /**
-     * @api {get} /api/degrees/:degreeTitle/modules/recommendations Get degree recommendations.     
+     * @api {get} /api/degrees/:degreeTitle/modules/recommendations Get degree recommendations.
      * @apiDescription Have to specify the degreeTitle in the parameters.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/degrees/BSc Computer Science/modules/recommendations
      *
      * @apiName GetDegreeRecommendations
@@ -1755,10 +1755,10 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {post} /api/degrees/:degreeTitle/modules/recommendations Add degree recommendations.     
+     * @api {post} /api/degrees/:degreeTitle/modules/recommendations Add degree recommendations.
      * @apiDescription Have to specify the degreeTitle in the parameters and the moduleID and recommendedID in the body in json form.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/degrees/BSc Computer Science/modules/recommendations
      * {moduleID : "4CCS1MAL", recommendedID :"5CCS2SEG"}
      *
@@ -1789,11 +1789,11 @@ module.exports = function (app, passport) {
         });
 
     /**
-	 * @api {post} /api/degrees/modules/recommendations Update a degree's dependencies in bulk.     
+	 * @api {post} /api/degrees/modules/recommendations Update a degree's dependencies in bulk.
 	 * @apiDescription Route to upload degree dependencies in bulk from a csv file.If process environment variable infile is set to true
-	 * data insertion will attempt to use the load data infile local command over inserts. Will fail if disabled on mysql server. 
+	 * data insertion will attempt to use the load data infile local command over inserts. Will fail if disabled on mysql server.
 	 * Have to add a mutlipart form data containing file field named batch.
-	 * @apiExample Example usage : 
+	 * @apiExample Example usage :
 	 * /api/degrees/modules/recommendations
 	 *
 	 * @apiName UpdateDegreeDependenciesBulk
@@ -1801,7 +1801,7 @@ module.exports = function (app, passport) {
 	 *
 	 * @apiSuccessExample Success-Response:
  	 *  HTTP/1.1 201 Created
-	 
+
 	 */
     app.post("/api/degrees/modules/recommendations", authLevel(1), upload.single('batch'), function (req, res) {
         if (!req.file) res.status(400).send('File not transfered');
@@ -1818,10 +1818,10 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {put} /api/degrees/:degreeTitle/modules/:moduleID/recommendations Update a degree's recommendations.     
+     * @api {put} /api/degrees/:degreeTitle/modules/:moduleID/recommendations Update a degree's recommendations.
      * @apiDescription Have to specify the degreeTitle and the moduleID in the parameters and recommendedIDArray in the body in json form. Can specify one or more recommendations.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/degrees/:degreeTitle/modules/:moduleID/recommendations
      * { recommendedIDArray : ["5CCS2SEG", "4CCS1IAI"]}
      *
@@ -1832,7 +1832,7 @@ module.exports = function (app, passport) {
      * @apiParam {string} moduleID The module code.
      * @apiParam {string} recommendedIDArray The modulesIDs of the modules recommended based on the module above.
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 204 
+     *  HTTP/1.1 204
      */
     app.put("/api/degrees/:degreeTitle/modules/:moduleID/recommendations", bodyParser.json(), authLevel(1), validator(validationConf.ASSIGNMENT_OPTIONS),
         validateSchemas([validationConf.RECOMMENDED_UPDATE_SCHEMA]),
@@ -1849,10 +1849,10 @@ module.exports = function (app, passport) {
     // Degree Building
 
     /**
-     * @api {post} /api/users/builds/ Create a degree build.     
+     * @api {post} /api/users/builds/ Create a degree build.
      * @apiDescription Have to specify the degreeTitle and the moduleID in the parameters and recommendedIDArray in the body in json form. Can specify one or more recommendations.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/users/builds/
      * { degreeTitle : 'BSc Computer Science',  userID : "studentemail@kcl.ac.uk"}
      *
@@ -1878,10 +1878,10 @@ module.exports = function (app, passport) {
         });
 
     /**
-     * @api {get} /api/users/:userID/builds/ Retrieve degree buildsbased on userID and/or template degree.     
+     * @api {get} /api/users/:userID/builds/ Retrieve degree buildsbased on userID and/or template degree.
      * @apiDescription Have to specify the userID in the parameters and template in the query. Can specify one or more degree templates.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/users/studentemail@kcl.ac.uk/builds?template=BSc Computer Science
      *
      * @apiName GetDegreeBuilds
@@ -1902,10 +1902,10 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {get} /api/users/builds/:buildID Retrieve a degree build.     
+     * @api {get} /api/users/builds/:buildID Retrieve a degree build.
      * @apiDescription Have to specify the buildID in the parameters.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/users/builds/1
      *
      * @apiName GetDegreeBuild
@@ -1931,10 +1931,10 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {put} /api/users/builds/:buildID/modules Update a degree build.     
+     * @api {put} /api/users/builds/:buildID/modules Update a degree build.
      * @apiDescription Have to specify the degreeTitle and the moduleID in the parameters and recommendedIDArray in the body in json form. Can specify one or more recommendations.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/users/builds/1/modules
      * { moduleID : "5CCS2SEG"}
      *
@@ -1944,7 +1944,7 @@ module.exports = function (app, passport) {
      * @apiParam {int} buildID The ID of the degree build.
      * @apiParam {string} moduleID The module code.
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 204 
+     *  HTTP/1.1 204
      * @apiError ENOT_FOUND The buildID or moduleID doesn't exist.
      * @apiErrorExample :
      * HTTP/1.1 404 Not Found
@@ -1964,10 +1964,10 @@ module.exports = function (app, passport) {
         });
 
     /**
-     * @api {delete} /api/users/builds/:buildID/modules/:moduleID Remove a module from a degree build.     
+     * @api {delete} /api/users/builds/:buildID/modules/:moduleID Remove a module from a degree build.
      * @apiDescription Have to specify the buildID and the moduleID in the parameters.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/users/builds/2/modules/5CCS2SEG
      *
      * @apiName RemoveModuleDegreeBuild
@@ -1976,7 +1976,7 @@ module.exports = function (app, passport) {
      * @apiParam {int} buildID The ID of the degree build.
      * @apiParam {string} moduleID The module code.
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 204 
+     *  HTTP/1.1 204
      * @apiError NOT_FOUND The build assignment does not exist.
      * @apiErrorExample :
      * HTTP/1.1 404 Not Found
@@ -1994,10 +1994,10 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {delete} /api/users/builds/:buildID Delete a degree build.     
+     * @api {delete} /api/users/builds/:buildID Delete a degree build.
      * @apiDescription Have to specify the buildID in the parameters.
      *
-     * @apiExample Example usage : 
+     * @apiExample Example usage :
      * /api/users/builds/1
      *
      * @apiName DeleteDegreeBuild
@@ -2005,7 +2005,7 @@ module.exports = function (app, passport) {
      *
      * @apiParam {int} buildID The ID of the degree build.
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 204 
+     *  HTTP/1.1 204
      */
     app.delete("/api/users/builds/:buildID", authLevel(2), requestFor('BUILDOWNER'), function (req, res) {
         degrees.removeBuild(req.params.buildID, function (err) {
@@ -2022,15 +2022,15 @@ module.exports = function (app, passport) {
     // Authentication routes  //// ***********************************************************************************************************************************************
 
     /**
-     * @api {get} /logged_in Retrieve the currently logged in user's details if any.											
+     * @api {get} /logged_in Retrieve the currently logged in user's details if any.
      * @apiDescription If no user is logged in returns null.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/logged_in
      *
      * @apiName SignUp
      * @apiGroup Authentication
-     *	 
+     *
      *
      * @apiSuccessExample Success-Response:
      *  {UserID : "studentemail@kcl.ac.uk", FName : "Student", Lname : "Name", AccessGroup: 2}
@@ -2047,16 +2047,16 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {get} /has_permissions/:accessGroup Check a user's permissions.                                
+     * @api {get} /has_permissions/:accessGroup Check a user's permissions.
      * @apiDescription Need to specify the access group as a parameter. Returns null if the user is not authenticated.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/has_permissions/1
      *
      * @apiName SignUp
      * @apiGroup Authentication
-     *	
-     * @apiParam {string} accessGroup The user's access group. 
+     *
+     * @apiParam {string} accessGroup The user's access group.
      *
      * @apiSuccessExample Success-Response:
      *  {UserID : "studentemail@kcl.ac.uk", AccessGroup : 2}
@@ -2068,18 +2068,18 @@ module.exports = function (app, passport) {
     });
 
     /**
-     * @api {post} /login Log in a user.                                                 
+     * @api {post} /login Log in a user.
      * @apiDescription Need to specify the userID and password of the user in the body in json form. Makes a cookie for the user to keep information accross pages.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/login
      * { userID : "moderatoremail@kcl.ac.uk", password : "password"} in json form.
      *
      * @apiName LogIn
      * @apiGroup Authentication
-     *	
-     * @apiParam {string} userID The email of the user. 
-     * @apiParam {string} password The user's password. 
+     *
+     * @apiParam {string} userID The email of the user.
+     * @apiParam {string} password The user's password.
      *
      * @apiSuccessExample Success-Response:
      *  HTTP/1.1 200 OK
@@ -2117,19 +2117,19 @@ module.exports = function (app, passport) {
 
 
     /**
-     * @api {post} /signup Sign up a user.							
+     * @api {post} /signup Sign up a user.
      * @apiDescription Need to specify the userID, first name, last name, password of the user in the body in json form.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/signup
      * { userID : "moderatoremail@kcl.ac.uk", fName : "Moderator", lName : "Bond" , password : "password"} in json form.
      *
      * @apiName SignUp
      * @apiGroup Authentication
-     *	
-     * @apiParam {string} userID The email of the user. 
-     * @apiParam {string} password The user's password. 
-     * @apiParam {string} fName The user's first name. 
+     *
+     * @apiParam {string} userID The email of the user.
+     * @apiParam {string} password The user's password.
+     * @apiParam {string} fName The user's first name.
      * @apiParam {string} lName The user's last name.
      *
      * @apiSuccessExample Success-Response:
@@ -2153,16 +2153,16 @@ module.exports = function (app, passport) {
     /**
      * @api {post} /reset_password Reset a user's password once the user has received his token by email.
      * @apiDescription Need to specify the userID and password of the user in the body in json form.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/reset_password
      * { userID : "moderatoremail@kcl.ac.uk", password : "password"} in json form.
      *
      * @apiName ResetPassword
      * @apiGroup Authentication
-     *	
-     * @apiParam {string} userID The email of the user. 
-     * @apiParam {string} password The user's password. 
+     *
+     * @apiParam {string} userID The email of the user.
+     * @apiParam {string} password The user's password.
      *
      * @apiSuccessExample Success-Response:
      *  HTTP/1.1 200 OK
@@ -2180,16 +2180,16 @@ module.exports = function (app, passport) {
     /**
      * @api {post} /change_password Change a user's password.
      * @apiDescription Need to specify the userID and password of the user in the body in json form.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/change_password
      * { userID : "moderatoremail@kcl.ac.uk", password : "password"} in json form.
      *
      * @apiName ChangePassword
      * @apiGroup Authentication
-     *	
-     * @apiParam {string} userID The email of the user. 
-     * @apiParam {string} password The user's password. 
+     *
+     * @apiParam {string} userID The email of the user.
+     * @apiParam {string} password The user's password.
      *
      * @apiSuccessExample Success-Response:
      *  HTTP/1.1 200 OK
@@ -2197,7 +2197,7 @@ module.exports = function (app, passport) {
      * @apiError USER_DOESNT_EXIST The userID is not correct.
      * @apiErrorExample :
      * HTTP/1.1 404 Not Found
-     * 
+     *
      */
     app.post('/change_password', bodyParser.json(), authLevel(2), validator(validationConf.USER_OPTIONS), validateSchemas([validationConf.PASSWORD_SCHEMA, validationConf.USERID_SCHEMA]),
         requestFor('USER', 'BODY'),
@@ -2214,24 +2214,24 @@ module.exports = function (app, passport) {
     /**
      * @api {put} /reset_access_group Reset the access group of a user.
      * @apiDescription Need to specify the host of the web application as a header and the userID in json form in the body.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/reset_access_group
      * { userID : "moderatoremail@kcl.ac.uk", accessGroup : 1} in json form.
      *
      * @apiName ResetAccessGroup
      * @apiGroup Authentication
-     *	
-     * @apiParam {string} userID The email of the user. 
-     * @apiParam {string} accessGroup The new access group of the user. 
+     *
+     * @apiParam {string} userID The email of the user.
+     * @apiParam {string} accessGroup The new access group of the user.
      *
      * @apiSuccessExample Success-Response:
-     *  HTTP/1.1 204 
+     *  HTTP/1.1 204
      *
      * @apiError USER_DOESNT_EXIST The userID is not correct.
      * @apiErrorExample :
      * HTTP/1.1 404 Not Found
-     * 
+     *
      */
     app.put('/reset_access_group', bodyParser.json(), authLevel(0), validator(validationConf.USER_OPTIONS), validateSchemas([validationConf.ACCESS_RESET_SCHEMA]),
         function (req, res) {
@@ -2249,16 +2249,16 @@ module.exports = function (app, passport) {
     /**
      * @api {post} /request_reset Request the reset of the password associated with userID.
      * @apiDescription Need to specify the host of the web application as a header and the userID in json form in the body.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/request_reset
      * { userID : "studentemail@kcl.ac.uk"} in json form.
      *
      * @apiName RequestReset
      * @apiGroup Authentication
      *
-     * @apiParam {string} host The host on which the web application is. 
-     * @apiParam {string} userID The email of the user. 
+     * @apiParam {string} host The host on which the web application is.
+     * @apiParam {string} userID The email of the user.
      *
      * @apiSuccessExample Success-Response:
      *  HTTP/1.1 200 OK
@@ -2266,7 +2266,7 @@ module.exports = function (app, passport) {
      * @apiError Unauthorized The userID is not correct.
      * @apiErrorExample :
      * HTTP/1.1 401 Unauthorized
-     * 
+     *
      */
     app.post('/request_reset', bodyParser.json(), validator(validationConf.USER_OPTIONS), validateSchemas([validationConf.USERID_EMAIL_SCHEMA]), function (req, res) {
         users.requestReset(req.headers.host, req.body.userID, function (err) {
@@ -2283,10 +2283,10 @@ module.exports = function (app, passport) {
     /**
      * @api {get} /logout Log out.
      * @apiDescription Logs out user but adds a cookie to keep his information for a some amount of time.
-     * 
-     * @apiExample Example usage : 
+     *
+     * @apiExample Example usage :
      *	/logout
-     * 
+     *
      * @apiName Logout
      * @apiGroup Authentication
      *

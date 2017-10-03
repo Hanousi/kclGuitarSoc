@@ -10,40 +10,41 @@ var nodemailer = require('nodemailer');
  */
 
 /**
- * Function to send a reset password email to the user. 
+ * Function to send a reset password email to the user.
  * Can specify either text or html.
  * @param {string} text - The text to be sent to the user in the email.
  * @param {string} html - The html to be sent to the user in the email.
  * @param {string} userAddress - The user's email.
  * @param {function} callback - What to do with the result of the function.
- * 
+ *
  */
 function handleMail(text, html, userAddress, subject, callback) {
-    
+
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
             user: process.env.MAIL_USER ||'kclguitarnoreply@gmail.com',
-            pass: process.env.MAIL_PASSWORD || 'C:jdP2k2&&%rF]]!' 
+            pass: process.env.MAIL_PASSWORD || 'C:jdP2k2&&%rF]]!'
         }
     });
 
 		var mailOptions = {
-				from: 'kclguitarnoreply@gmail.com', 
-				to: userAddress, 
-				subject: subject 	
+				from: 'kclguitarnoreply@gmail.com',
+				to: userAddress,
+				subject: subject
 		};
-		
-		text ? mailOptions.text = text : mailOptions.html = html;		
+
+		text ? mailOptions.text = text : mailOptions.html = html;
 
 		transporter.sendMail(mailOptions, function(err, info){
 		  if(err){
+        console.log(err);
 		      callback(err);
 		  }else{
 		      callback(null,info.response);
 		  };
 		});
-    
+
 }
 
 

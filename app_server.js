@@ -9,6 +9,7 @@ var db = require('./server/config/connect_db.js');
 var mySQLStore = require('express-mysql-session')(session);
 var sessionStore;
 var passportSetup = require('./server/config/passport.js');
+
 db.connect(process.env.NODE_ENV === 'test' ?  db.TEST_MODE : db.PRODUCTION_MODE, ()=>{
 	sessionStore = new mySQLStore({
 		checkExpirationInterval: 900000,
@@ -21,10 +22,10 @@ db.connect(process.env.NODE_ENV === 'test' ?  db.TEST_MODE : db.PRODUCTION_MODE,
         }
     }},db.state.pool);
 	console.log('Connecting to database in '+db.state.mode);
-	passportSetup(passport); 
+	passportSetup(passport);
 
-	app.use(morgan('dev')); 
-	app.use(cookieParser()); 
+	app.use(morgan('dev'));
+	app.use(cookieParser());
 	app.use(bodyParser.urlencoded({
 		extended: true
 	}));
@@ -35,17 +36,14 @@ db.connect(process.env.NODE_ENV === 'test' ?  db.TEST_MODE : db.PRODUCTION_MODE,
 		saveUninitialized: true,
 		store: sessionStore,
 		cookie: { maxAge: 7*24*3600000}
-	 } )); 
+	 } ));
 	app.use(passport.initialize());
-	app.use(passport.session()); 
+	app.use(passport.session());
 
 
 
-	require('./server/routes.js')(app, passport); 
+	require('./server/routes.js')(app, passport);
 	var server = app.listen(process.env.PORT || 8000, ()=> console.log('Server listening on port '+(process.env.PORT || 8000)+'...'));
 
 	module.exports = server;
 });
-
-
-

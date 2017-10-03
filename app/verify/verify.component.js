@@ -4,7 +4,7 @@ angular.
 module('verify', []).
 component('verify', {
     templateUrl: 'verify/verify.template.html',
-    controller: function VerifyController($window, $scope, $cookies, $http, $routeParams) {
+    controller: function VerifyController($window, $scope, $cookies, $http, $routeParams, $timeout) {
         var self = this;
 
         $http.get("/api/code/" + $routeParams.inUserID).then(function successCallBack(response) {

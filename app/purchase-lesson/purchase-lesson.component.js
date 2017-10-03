@@ -18,7 +18,6 @@ component('purchaseLesson', {
 
         $http.get('/api/lesson/' + $routeParams.lessonId).then(function (response) {
             self.lesson = response.data;
-            console.log(self.lesson[0]);
             self.month = (monthsInAYear.indexOf(self.lesson[0].Month)) + 1;
         })
 

@@ -77,8 +77,6 @@ component('createAccount', {
                     $http.post("/verify", {
                         "userID": self.inUserId,
                         "token": makeToken()
-                    }).then(function successCallback(response) {
-                        console.log("email.sent");
                     });
 
                     $window.location.href = "#!/home"

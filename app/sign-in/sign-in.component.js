@@ -6,9 +6,7 @@ component('signIn', {
     templateUrl: 'sign-in/sign-in.template.html',
     controller: function SignInController($window, $scope, $cookies, $http) {
         var self = this;
-        
-        console.log("test");
-        
+                
         var passwordCheck = function (str) {
             var str2 = "";
             var rnd = ['', '*', '%', '$', '@', '£', '&', '$$', '!', '_', '/', '~'];

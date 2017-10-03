@@ -8,7 +8,6 @@ component('upgradeAccount', {
         var self = this;
 
         self.upgradeAccount = function() {
-            console.log(self.inUserId);
             $http.put("reset_access_group", {
                 "userID": self.inUserId,
                 "accessGroup": 1

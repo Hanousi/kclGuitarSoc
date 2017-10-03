@@ -60,7 +60,7 @@ var connectDatabase = function(mode, callback) {
 		state.pool = mysql.createPool(
 			(mode == exports.PRODUCTION_MODE ? productionOptions : testOptions)
 		);
-	
+
 		state.mode = mode;
 	}
 
@@ -77,7 +77,7 @@ var connectDatabase = function(mode, callback) {
  * @param {function} callback - What to do with the result of the function.
  */
 var getConnection = function(callback) {
-		if(!state.pool) return callback(new Error('Missing database connection.'));   
+		if(!state.pool) return callback(new Error('Missing database connection.'));
 		state.pool.getConnection(function(err, connection) {
         callback(err, connection);
     });
@@ -99,7 +99,7 @@ var populate = function(data, callback) {
       var keys = Object.keys(row)
         , values = keys.map(function(key) { return row[key]})
 			 cb(null, values);
-      
+
     }, (err, data)=>{state.pool.query('INSERT INTO ' + name + ' (' + keys.join(',') + ') VALUES ?',[data], cb);});
   }, callback)
 }
@@ -118,7 +118,7 @@ var drop = function(tables, callback) {
 																				async.series([(doneInner)=>connection.query('DELETE FROM ' + name, doneInner),
 																											(doneInner)=>connection.query('ALTER TABLE ' + name +' AUTO_INCREMENT = 1', doneInner)], cb), done)]
 		, (err)=>{ if(connectionHandle) connectionHandle.release(); callback(err)});
-  
+
 }
 
 exports.state = state;
@@ -126,4 +126,3 @@ exports.connect = connectDatabase;
 exports.getConnection = getConnection;
 exports.populate = populate;
 exports.clear = drop;
-

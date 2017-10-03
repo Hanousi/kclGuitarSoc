@@ -33,7 +33,6 @@ component('yourLessons', {
 
             }, function errorCallBack(response) {
                 self.emptyLessons = 1;
-                console.log(self.emptyLessons);
             })
         })
     }
