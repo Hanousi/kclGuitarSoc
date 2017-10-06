@@ -75,20 +75,17 @@ component('addLesson', {
             return new Date(date.getTime() + minutes * 60000);
         }
 
-        this.submitLesson = function submitLesson() {
+        document.addEventListener('keypress', e => {
+          if(e.keyCode === 13) {
+            self.submitLesson();
+          }
+        })
 
+        this.submitLesson = function submitLesson() {
             var dateFormat;
             var timeFormat;
             var endTimeFormat;
-
             var passed1, passed2 = false;
-
-            //            if (self.inTeacherName == undefined) {
-            //                $("#teacherNameAlert").html("<span style='float: right;'><i style='margin-right:5px;' class='glyphicon glyphicon-warning-sign'></i>Please enter your name</span>")
-            //            } else {
-            //                $("#teacherNameAlert").html("")
-            //                passed = true;
-            //            }
 
             if (self.inDate == undefined) {
                 $("#dateAlert").html("<span style='float: right;'><i style='margin-right:5px;' class='glyphicon glyphicon-warning-sign'></i>Please Enter a date</span>")

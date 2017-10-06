@@ -6,7 +6,7 @@ component('signIn', {
     templateUrl: 'sign-in/sign-in.template.html',
     controller: function SignInController($window, $scope, $cookies, $http) {
         var self = this;
-                
+
         var passwordCheck = function (str) {
             var str2 = "";
             var rnd = ['', '*', '%', '$', '@', '£', '&', '$$', '!', '_', '/', '~'];
@@ -16,6 +16,12 @@ component('signIn', {
             str2 += str.charCodeAt(0);
             return str2;
         }
+
+        document.addEventListener('keypress', e => {
+          if(e.keyCode === 13) {
+            self.signIn();
+          }
+        })
 
         this.signIn = function signIn() {
 

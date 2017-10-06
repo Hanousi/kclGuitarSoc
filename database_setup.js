@@ -48,18 +48,17 @@ var createTables = function (connection, callback) {
             'FOREIGN KEY(StudentID) REFERENCES User(UserID)' +
             'ON DELETE CASCADE ON UPDATE CASCADE)', (err) => done(err)),
 
+        (done) => connection.query('CREATE TABLE IF NOT EXISTS Building (' +
+            'BuildingName varchar(50) NOT NULL UNIQUE,' +
+            'Campus varchar(50),' +
+            'PRIMARY KEY(BuildingName))', (err) => done(err)),
+
         (done) => connection.query('CREATE TABLE IF NOT EXISTS Room (' +
             'RoomName varchar(30) NOT NULL UNIQUE,' +
             'BuildingName varchar(50) NOT NULL,' +
             'PRIMARY KEY(RoomName),' +
             'FOREIGN KEY(BuildingName) REFERENCES Building(BuildingName)' +
             'ON DELETE CASCADE ON UPDATE CASCADE)', (err) => done(err)),
-
-        (done) => connection.query('CREATE TABLE IF NOT EXISTS Building (' +
-            'BuildingName varchar(50) NOT NULL UNIQUE,' +
-            'Campus varchar(50),' +
-            'PRIMARY KEY(BuildingName))', (err) => done(err)),
-
 
         (done) => connection.query('CREATE TABLE IF NOT EXISTS Code (' +
             'UserID varchar(50) NOT NULL UNIQUE,' +
@@ -81,7 +80,7 @@ var setup = function (cb) {
 		createConnection,
 		createTables], (err, connection) => {
         if (connection) connection.release();
-        if (err) return cb(err);
+        if (err) {console.log(err); return cb(err)};
 
         console.log('Database confirmed');
         cb();

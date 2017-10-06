@@ -409,10 +409,6 @@ module.exports = function (app, passport) {
     });
 
     app.put("/api/lesson", bodyParser.json(), authLevel(2), function (req, res) {
-        console.log(req.body.StudentID);
-        console.log(req.body.StudentName);
-        console.log(req.body.LessonID);
-
         lessons.bookLesson(req.body.StudentID, req.body.StudentName, req.body.LessonID, function (err) {
             if (err) {
                 if (err.message == 'NOT_FOUND') res.sendStatus(404);
@@ -510,13 +506,11 @@ module.exports = function (app, passport) {
                     httpOnly: true
                 }
             );
-            console.log('hi');
             res.cookie('selector_user', req.user, {
                 maxAge: req.session.cookie.maxAge,
                 expires: req.session.cookie.expires,
                 httpOnly: false
             });
-            console.log('hi2')
             res.sendStatus(200);
         });
 

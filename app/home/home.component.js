@@ -28,8 +28,9 @@ component('home', {
         })
 
         self.logout = function () {
-            $timeout($http.get("/logout"));
-            $timeout(location.reload());
+            $http.get("/logout").then(function() {
+              location.reload();
+            });
         }
 
         self.scrollTo = function (id) {
