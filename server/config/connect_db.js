@@ -14,9 +14,10 @@ var async = require('async');
  *  Variable representing the production database's options.
  */
 var productionOptions = {
-	host : process.env.DATABASE_HOST || 'localhost',
-	user : process.env.DATABASE_USER || 'root',
-	password :	process.env.DATABASE_PASS || '',
+	host : process.env.DATABASE_HOST || 'kcl.cr7ts3omt1wd.eu-west-2.rds.amazonaws.com',
+	user : process.env.DATABASE_USER || 'hanousi',
+	password :	process.env.DATABASE_PASS || 'mypassword',
+	acquireTimeout: 10000,
 	database : process.env.DATABASE_URL || 'guitar_society',
     users_table : 'User'
 }
