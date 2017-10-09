@@ -17,7 +17,7 @@ var productionOptions = {
 	host : process.env.DATABASE_HOST || 'kcl.cr7ts3omt1wd.eu-west-2.rds.amazonaws.com',
 	user : process.env.DATABASE_USER || 'hanousi',
 	password :	process.env.DATABASE_PASS || 'mypassword',
-	acquireTimeout: 100000,
+	acquireTimeout: 20000,
 	database : process.env.DATABASE_URL || 'guitar_society',
     users_table : 'User'
 }
