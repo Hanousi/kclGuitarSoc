@@ -235,6 +235,99 @@ a.anchor {
     background-size: 200% 100% !important;
     background-position: center !important;
   }
+
+  #aboutUsPicture {
+    display: none;
+  }
+
+  #aUHeader {
+    display: none;
+  }
+
+  #aUTitle {
+    border-bottom: 1px solid #536D99;
+    margin: 0px 20px 0px 20px;
+    font-size: 28px !important;
+  }
+
+  #auDesc {
+    margin-left: 10px;
+    font-size: 17px !important;
+  }
+
+  #bookALesson {
+    height: 500px !important;
+  }
+
+  #bALHeader {
+    display: none;
+  }
+
+  #bALTitle {
+    margin-left: 25px;
+    text-align: left !important;
+    font-size: 28px !important;
+    border-bottom: 1px solid white;
+  }
+
+  #bALDescContainer {
+    flex-direction: column-reverse;
+    align-items: center !important;
+  }
+
+  #bALDesc {
+    font-size: 17px !important;
+    margin-left: 10px;
+  }
+
+  #bALBtnContainer {
+    margin-top: 4%;
+  }
+
+  #contactUs {
+    height: 320px !important;
+  }
+
+  #sliderContainer {
+    margin-top: 4%;
+  }
+
+  #slack {
+    font-size: 17px !important;
+  }
+
+  #facebookImg {
+    width: 25px !important;
+    height: 25px !important;
+  }
+
+  #slackImg {
+    width: 25px !important;
+    height: 25px !important;
+  }
+
+  #twitterImg {
+    width: 28px !important;
+    height: 25px !important;
+  }
+}
+
+#facebookImg {
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+}
+
+#slackImg {
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+}
+
+#twitterImg {
+  width: 60px;
+  height: 50px;
+  margin-right: 5px;
 }
 
 #homeTitle {
@@ -297,6 +390,12 @@ a.anchor {
     font-size: 30px;
     font-weight: 300;
     padding: 5px 10px 5px 10px;
+}
+
+#aboutUsPicture {
+  width: 400px;
+  height:230px;
+  margin-left: 10%;
 }
 
 #aboutUs {
