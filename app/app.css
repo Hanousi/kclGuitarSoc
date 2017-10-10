@@ -230,6 +230,11 @@ a.anchor {
   #mainButtonsContainer {
     margin-top: 15% !important;
   }
+
+  #home {
+    background-size: 200% 100% !important;
+    background-position: center !important;
+  }
 }
 
 #homeTitle {
