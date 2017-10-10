@@ -1,13 +1,13 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
     <div class="container-fluid">
         <div class="navbar-header">
-            <img src="../img/KCLGSLogo.png" id="navLogo" alt="King's College London Logo" style="width: 72px; height: 72px; margin: -5px 15px 0px -5px;">
+            <img src="../img/KCLGSLogo.png" id="navLogo" alt="King's College London Logo">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand verticalAlign" ng-click="$ctrl.scrollTo('home')">KCL Guitar Society</a>
+            <a class="navbar-brand" id="websiteTitle" ng-click="$ctrl.scrollTo('home')">KCL Guitar Society</a>
         </div>
         <div>
             <div class="collapse navbar-collapse" id="myNavbar">
@@ -34,25 +34,18 @@
 
         <div id="homeTitle">
 
-            <img src="../img/KCLGSLogo.png" style="width: 540px; height 540">
+            <img src="../img/KCLGSLogo.png" id="homeScreenLogo">
 
         </div>
-        <div style="margin-top: 4%;">
-
-            <div class="col-sm-6" id="BALBtnDiv">
+        <div id="mainButtonsContainer">
 
                 <a ng-click="$ctrl.scrollTo('bookALessonAnchor')">
                     <button class="homeButton hvr-bounce-to-right">Book a lesson</button>
                 </a>
-
-            </div>
-            <div class="col-sm-6" id="FOMBtnDiv">
-
+                <span style="width: 10%"></span>
                 <a ng-click="$ctrl.scrollTo('aboutUsAnchor')">
                     <button class="homeButton hvr-bounce-to-left">Find out more</button>
                 </a>
-
-            </div>
 
         </div>
 
