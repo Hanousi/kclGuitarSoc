@@ -212,7 +212,7 @@ a.anchor {
 
 @media screen and (max-width: 376px) {
   #homeScreenLogo {
-    margin-top: 15%;
+    margin-top: 14%;
     width: 340px;
   }
 
@@ -228,7 +228,7 @@ a.anchor {
   }
 
   #mainButtonsContainer {
-    margin-top: 15% !important;
+    margin-top: 12% !important;
   }
 
   #home {
