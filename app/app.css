@@ -212,7 +212,7 @@ a.anchor {
 
 @media screen and (max-width: 376px) {
   #homeScreenLogo {
-    margin-top: 25%;
+    margin-top: 15%;
     width: 340px;
   }
 
@@ -234,6 +234,10 @@ a.anchor {
   #home {
     background-size: 200% 100% !important;
     background-position: center !important;
+  }
+
+  #aboutUs {
+    height: 440px !important;
   }
 
   #aboutUsPicture {
