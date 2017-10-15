@@ -237,7 +237,7 @@ a.anchor {
   width: 540px;
 }
 
-@media screen and (max-width: 376px) {
+@media screen and (max-width: 415px) {
   #homeScreenLogo {
     margin-top: 14%;
     width: 340px;
@@ -356,6 +356,27 @@ a.anchor {
 
   .addForm {
     width: 78% !important;
+  }
+
+  .rememberMe {
+    width: 50% !important;
+    margin-top: 4% !important;
+  }
+
+  .reminders {
+    width: 78% !important;
+  }
+
+  .calenderHeader {
+    font-size: 23px !important;
+  }
+
+  .addLesson {
+    margin: 13px 0 0 -28px !important;
+  }
+
+  .dayInMonth {
+    height: 100px !important;
   }
 }
 
@@ -788,6 +809,7 @@ a.anchor {
     width: 13%;
     text-align: center;
     margin: 0.6%;
+    padding: 0;
     font-size: 18px;
 }
 
